@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+
+const versionApiURL = import.meta.env.VITE_VERSION_API;
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [champions, setChampions] = useState([]);
+  const [version, setVersion] = useState();
 
+  const getChampions = async () => {
+    try {
+      const response = await axios.get(versionApiURL);
+      setVersion(response.data[0]);
+
+      const res = await axios.get(
+        `https://ddragon.leagueoflegends.com/cdn/${response.data[0]}/data/en_US/champion.json`
+      );
+      setChampions(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // const getChampions = async () => {
+  //   const response = await axios.get("");
+  // };
+  useEffect(() => {
+    getChampions();
+  }, []);
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Hello</h1>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
