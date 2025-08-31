@@ -4,6 +4,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
 import ChampionsList from "./components/lol/champions-list/champions-list";
+import ChampionDetails from "./components/lol/champion-details/champion-details";
 
 const versionApiURL = import.meta.env.VITE_VERSION_API;
 const baseApiURL = import.meta.env.VITE_BASE_API;
@@ -38,6 +39,16 @@ function App() {
           path="/lolguides/champions"
           element={
             <ChampionsList
+              champions={champions}
+              version={version}
+              baseApiURL={baseApiURL}
+            />
+          }
+        />
+        <Route
+          path="/lolguides/champions/:champId"
+          element={
+            <ChampionDetails
               champions={champions}
               version={version}
               baseApiURL={baseApiURL}

@@ -1,0 +1,23 @@
+.champ-info {
+  display: flex;
+  height: 200px;
+  width: 1000px;
+  margin-bottom: 100px;
+  border: 4px solid gold;
+}
+.champ-info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: 10px;
+  padding: 0;
+}
+.champ-info-text h1,
+.champ-info-text h3,
+.champ-info-text p {
+  margin: 5px;
+}
+.champ-info-tag {
+  display: flex;
+  gap: 10px;
+}

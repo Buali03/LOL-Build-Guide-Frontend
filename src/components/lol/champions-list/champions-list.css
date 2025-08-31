@@ -1,0 +1,47 @@
+.champions-list-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  max-width: 1000px;
+}
+
+.champion-card {
+  background-color: #333356;
+  border-radius: 12px;
+  text-align: center;
+  padding: 50px;
+  width: 180px;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.champion-card:hover {
+  transform: scale(1.05);
+}
+
+.champion-img {
+  width: 50%;
+  border-radius: 50%;
+  border: 4px solid gold;
+  margin-bottom: 10px;
+}
+
+.champion-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.champion-name {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.champion-title {
+  font-size: 0.9em;
+  color: #ccc;
+}
