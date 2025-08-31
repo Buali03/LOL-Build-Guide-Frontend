@@ -1,11 +1,11 @@
 .navbar {
   height: 50px;
-  background-color: gold;
+  background-color: rgb(24, 24, 65);
   margin-bottom: 100px;
   width: 100%;
 }
 
 .nav-link {
-  color: rgb(36, 36, 68);
+  color: gold;
   font-size: 20px;
 }

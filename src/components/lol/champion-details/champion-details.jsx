@@ -4,7 +4,7 @@ import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import "./champion-details.css";
 
-const ChampionDetails = ({ baseApiURL, version, tagColors }) => {
+const ChampionDetails = ({ baseApiURL, version, tagIcons }) => {
   const { champId } = useParams();
   const [thisChamp, setThisChamp] = useState();
   const getThisChamp = async () => {
