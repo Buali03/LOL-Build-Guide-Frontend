@@ -4,7 +4,7 @@ import axios from "axios";
 
 const ChampionsList = ({ champions, baseApiURL, version }) => {
   return (
-    <div>
+    <div className="grid grid-cols-5 sm:grid-cols-3 md:grid-cols-5 gap-6 p-6">
       {champions.length
         ? champions.map((champ) => {
             console.log(champ);
