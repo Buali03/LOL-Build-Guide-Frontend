@@ -4,7 +4,7 @@ import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import "./champion-details.css";
 
-const ChampionDetails = ({ baseApiURL, version }) => {
+const ChampionDetails = ({ baseApiURL, version, tagColors }) => {
   const { champId } = useParams();
   const [thisChamp, setThisChamp] = useState();
   const getThisChamp = async () => {
@@ -32,12 +32,12 @@ const ChampionDetails = ({ baseApiURL, version }) => {
           <h3>{thisChamp.title}</h3>
           <div className="champ-info-tag">
             {thisChamp.tags.map((tag) => {
-              return <h3>{tag}</h3>;
+              return <h3 key={tag}>{tag}</h3>;
             })}
           </div>
         </div>
+        <p className="champ-info-lore">{thisChamp.lore}</p>
       </div>
-      <p>{thisChamp.lore}</p>
       <div></div>
     </div>
   ) : (

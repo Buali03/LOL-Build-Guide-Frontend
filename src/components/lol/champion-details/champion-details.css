@@ -12,10 +12,17 @@
   margin-left: 10px;
   padding: 0;
 }
-.champ-info-text h1,
-.champ-info-text h3,
-.champ-info-text p {
-  margin: 5px;
+.champ-info-text h1 {
+  color: gold;
+  margin: 9px;
+  text-transform: capitalize;
+}
+.champ-info-text h3 {
+  margin: 9px;
+  text-transform: capitalize;
+}
+.champ-info-lore {
+  margin-left: 50px;
 }
 .champ-info-tag {
   display: flex;

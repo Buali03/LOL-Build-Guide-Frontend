@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./champions-list.css";
 
-const ChampionsList = ({ champions, baseApiURL, version }) => {
+const ChampionsList = ({ champions, baseApiURL, version, tagColors }) => {
   return (
     <div className="champions-list-card">
       {champions.length
@@ -20,6 +20,11 @@ const ChampionsList = ({ champions, baseApiURL, version }) => {
                 <ul className="champion-ul">
                   <li className="champion-name">{champ.name}</li>
                   <li className="champion-title">{champ.title}</li>
+                  <div className="champion-tag">
+                    {champ.tags.map((tag) => {
+                      return <li key={tag}>{tag}</li>;
+                    })}
+                  </div>
                 </ul>
               </Link>
             );

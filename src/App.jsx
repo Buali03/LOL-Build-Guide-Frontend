@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode";
 
 import ChampionsList from "./components/lol/champions-list/champions-list";
 import ChampionDetails from "./components/lol/champion-details/champion-details";
+import NavBar from "./components/NavBar/NavBar";
 
 const versionApiURL = import.meta.env.VITE_VERSION_API;
 const baseApiURL = import.meta.env.VITE_BASE_API;
@@ -12,6 +13,15 @@ const baseApiURL = import.meta.env.VITE_BASE_API;
 function App() {
   const [champions, setChampions] = useState([]);
   const [version, setVersion] = useState();
+
+  const tagColors = {
+    Fighter: "firebrick",
+    Assassin: "darkslategray",
+    Marksman: "goldenrod",
+    Mage: "royalblue",
+    Tank: "steelblue",
+    Support: "forestgreen",
+  };
 
   const getChampions = async () => {
     try {
@@ -34,6 +44,7 @@ function App() {
 
   return (
     <Router>
+      <NavBar />
       <Routes>
         <Route
           path="/lolguides/champions"
@@ -42,6 +53,7 @@ function App() {
               champions={champions}
               version={version}
               baseApiURL={baseApiURL}
+              tagColors={tagColors}
             />
           }
         />
@@ -52,6 +64,7 @@ function App() {
               champions={champions}
               version={version}
               baseApiURL={baseApiURL}
+              tagColors={tagColors}
             />
           }
         />
