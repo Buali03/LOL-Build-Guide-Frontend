@@ -6,6 +6,7 @@ import { jwtDecode } from "jwt-decode";
 import ChampionsList from "./components/lol/champions-list/champions-list";
 
 const versionApiURL = import.meta.env.VITE_VERSION_API;
+const baseApiURL = import.meta.env.VITE_BASE_API;
 
 function App() {
   const [champions, setChampions] = useState([]);
@@ -18,7 +19,7 @@ function App() {
       setVersion(latest);
 
       const res = await axios.get(
-        `https://ddragon.leagueoflegends.com/cdn/${latest}/data/en_US/champion.json`
+        `${baseApiURL}${latest}/data/en_US/champion.json`
       );
       setChampions(Object.values(res.data.data));
     } catch (error) {
@@ -35,7 +36,13 @@ function App() {
       <Routes>
         <Route
           path="/lolguides/champions"
-          element={<ChampionsList champions={champions} />}
+          element={
+            <ChampionsList
+              champions={champions}
+              version={version}
+              baseApiURL={baseApiURL}
+            />
+          }
         />
       </Routes>
     </Router>
