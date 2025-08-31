@@ -22,23 +22,25 @@ const ChampionDetails = ({ baseApiURL, version, tagColors }) => {
   }, [baseApiURL, version, champId]);
 
   return thisChamp ? (
-    <div>
-      <div className="champ-info">
-        <img
-          src={`${baseApiURL}${version}/img/champion/${thisChamp.image.full}`}
-        />
-        <div className="champ-info-text">
-          <h1>{thisChamp.name}</h1>
-          <h3>{thisChamp.title}</h3>
-          <div className="champ-info-tag">
-            {thisChamp.tags.map((tag) => {
-              return <h3 key={tag}>{tag}</h3>;
-            })}
+    <div className="main-content">
+      <div>
+        <div className="champ-info">
+          <img
+            src={`${baseApiURL}${version}/img/champion/${thisChamp.image.full}`}
+          />
+          <div className="champ-info-text">
+            <h1>{thisChamp.name}</h1>
+            <h3>{thisChamp.title}</h3>
+            <div className="champ-info-tag">
+              {thisChamp.tags.map((tag) => {
+                return <h3 key={tag}>{tag}</h3>;
+              })}
+            </div>
           </div>
+          <p className="champ-info-lore">{thisChamp.lore}</p>
         </div>
-        <p className="champ-info-lore">{thisChamp.lore}</p>
+        <div></div>
       </div>
-      <div></div>
     </div>
   ) : (
     <ClipLoader color="red" />

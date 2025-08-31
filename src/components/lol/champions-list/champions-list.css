@@ -16,7 +16,7 @@
   text-decoration: none;
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .champion-card:hover {
@@ -40,6 +40,7 @@
   font-weight: bold;
   font-size: 20px;
   color: gold;
+  margin-bottom: 5px;
 }
 
 .champion-title {
