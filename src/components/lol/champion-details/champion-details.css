@@ -1,6 +1,6 @@
 .champ-info {
   display: flex;
-  height: 200px;
+  height: 215px;
   width: 1000px;
   margin-bottom: 100px;
   border: 4px solid gold;
@@ -14,17 +14,21 @@
 }
 .champ-info-text h1 {
   color: gold;
-  margin: 9px;
+  margin: 0;
   text-transform: capitalize;
 }
 .champ-info-text h3 {
-  margin: 9px;
+  margin: 0;
   text-transform: capitalize;
-}
-.champ-info-lore {
-  margin-left: 50px;
 }
 .champ-info-tag {
   display: flex;
   gap: 10px;
+}
+.champ-info-text hr {
+  width: 100%;
+  opacity: 0.5;
+}
+.champ-info-lore {
+  margin-left: 50px;
 }

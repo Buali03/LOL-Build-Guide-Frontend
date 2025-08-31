@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import "./champion-details.css";
+import ChampionGuideList from "../champion-guide-list/champion-guide-list";
 
 const ChampionDetails = ({ baseApiURL, version, tagIcons }) => {
   const { champId } = useParams();
@@ -30,7 +31,9 @@ const ChampionDetails = ({ baseApiURL, version, tagIcons }) => {
           />
           <div className="champ-info-text">
             <h1>{thisChamp.name}</h1>
+            <hr />
             <h3>{thisChamp.title}</h3>
+            <hr />
             <div className="champ-info-tag">
               {thisChamp.tags.map((tag) => {
                 return <h3 key={tag}>{tag}</h3>;
@@ -39,7 +42,7 @@ const ChampionDetails = ({ baseApiURL, version, tagIcons }) => {
           </div>
           <p className="champ-info-lore">{thisChamp.lore}</p>
         </div>
-        <div></div>
+        <ChampionGuideList thisChamp={thisChamp} />
       </div>
     </div>
   ) : (

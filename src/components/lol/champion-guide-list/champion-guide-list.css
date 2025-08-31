@@ -1,0 +1,11 @@
+.champion-guide-list {
+  display: flex;
+  height: 215px;
+  width: 1000px;
+  margin-bottom: 100px;
+  border: 4px solid gold;
+}
+
+.champion-guide-list-title {
+  margin-left: 25px;
+}
