@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
+import ChampionsList from "./components/lol/champions-list/champions-list";
+
 const versionApiURL = import.meta.env.VITE_VERSION_API;
 
 function App() {
@@ -12,26 +14,31 @@ function App() {
   const getChampions = async () => {
     try {
       const response = await axios.get(versionApiURL);
-      setVersion(response.data[0]);
+      const latest = response.data[0];
+      setVersion(latest);
 
       const res = await axios.get(
-        `https://ddragon.leagueoflegends.com/cdn/${response.data[0]}/data/en_US/champion.json`
+        `https://ddragon.leagueoflegends.com/cdn/${latest}/data/en_US/champion.json`
       );
-      setChampions(res.data);
+      setChampions(Object.values(res.data.data));
     } catch (error) {
       console.log(error);
     }
   };
-  // const getChampions = async () => {
-  //   const response = await axios.get("");
-  // };
+
   useEffect(() => {
     getChampions();
   }, []);
+
   return (
-    <>
-      <h1>Hello</h1>
-    </>
+    <Router>
+      <Routes>
+        <Route
+          path="/lolguides/champions"
+          element={<ChampionsList champions={champions} />}
+        />
+      </Routes>
+    </Router>
   );
 }
 
