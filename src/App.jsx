@@ -24,6 +24,7 @@ function App() {
   const [champions, setChampions] = useState([]);
   const [runes, setRunes] = useState([]);
   const [items, setItems] = useState([]);
+  const [summonerSpells, setSummonerSpells] = useState([]);
   const [version, setVersion] = useState();
 
   const tagIcons = {
@@ -81,10 +82,37 @@ function App() {
     }
   };
 
+  const getSummonerSpells = async () => {
+    try {
+      await getVersion();
+      const res = await axios.get(
+        `${baseApiURL}${version}/data/en_US/summoner.json`
+      );
+      const allSummoners = Object.values(res.data.data);
+      const filteredSummonerSpells = allSummoners.filter((spell) =>
+        [
+          "SummonerFlash",
+          "SummonerIgnite",
+          "SummonerBarrier",
+          "SummonerHeal",
+          "SummonerGhost",
+          "SummonerSmite",
+          "SummonerTeleport",
+          "SummonerExhaust",
+          "SummonerCleanse",
+        ].includes(spell.id)
+      );
+      setSummonerSpells(filteredSummonerSpells);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getChampions();
     getRunes();
     getItems();
+    getSummonerSpells();
   }, [version]);
 
   return (
@@ -117,11 +145,12 @@ function App() {
           path="/lolguides/new"
           element={
             <GuideForm
+              baseApiURL={baseApiURL}
+              version={version}
               champions={champions}
               runes={runes}
               items={items}
-              baseApiURL={baseApiURL}
-              version={version}
+              summonerSpells={summonerSpells}
             />
           }
         />

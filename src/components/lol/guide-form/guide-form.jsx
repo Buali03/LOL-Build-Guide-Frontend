@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-const GuideForm = ({ champions, runes, items, baseApiURL, version }) => {
+const GuideForm = ({
+  champions,
+  runes,
+  items,
+  summonerSpells,
+  baseApiURL,
+  version,
+}) => {
   const navigate = useNavigate();
 
   const [lolGuide, setLOLGuide] = useState([]);
@@ -12,21 +19,42 @@ const GuideForm = ({ champions, runes, items, baseApiURL, version }) => {
   const [secondaryRuneImage, setSecondaryRuneImage] = useState(
     "perk-images/Styles/7203_Whimsy.png"
   );
+  const [firstSpellImage, setFirstSpellImage] = useState("SummonerBarrier.png");
+  const [secondSpellImage, setSecondSpellImage] = useState(
+    "SummonerExhaust.png"
+  );
 
   const handleChange = async (event) => {
     setNewLOLGuide({ ...newLOLGuide, [event.target.name]: event.target.value });
     console.log("Guide: ", newLOLGuide);
   };
+
   const handlePrimaryRuneChange = async (event) => {
     const selectedRune = runes.find((rune) => rune.name === event.target.value);
     setPrimaryRuneImage(selectedRune.icon);
-    console.log("Primary Rune: ", primaryRuneImage);
+    // console.log("Primary Rune: ", primaryRuneImage);
   };
   const handleSecondaryRuneChange = async (event) => {
     const selectedRune = runes.find((rune) => rune.name === event.target.value);
     setSecondaryRuneImage(selectedRune.icon);
-    console.log("Secondary Rune: ", secondaryRuneImage);
+    // console.log("Secondary Rune: ", secondaryRuneImage);
   };
+
+  const handleFirstSpellChange = async (event) => {
+    const selectedSpell = summonerSpells.find(
+      (spell) => spell.name === event.target.value
+    );
+    setFirstSpellImage(selectedSpell.image.full);
+    console.log("First Spell: ", firstSpellImage);
+  };
+  const handleSecondSpellChange = async (event) => {
+    const selectedSpell = summonerSpells.find(
+      (spell) => spell.name === event.target.value
+    );
+    setSecondSpellImage(selectedSpell.image.full);
+    console.log("Second Spell: ", secondSpellImage);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLOLGuide([...lolGuide, newLOLGuide]);
@@ -40,6 +68,7 @@ const GuideForm = ({ champions, runes, items, baseApiURL, version }) => {
       <form onSubmit={handleSubmit}>
         <label>Guide Title:</label>
         <input id="title" name="title" type="text" onChange={handleChange} />
+        <br />
         <label>Champion:</label>
         <select onChange={handleChange} name="champion" id="champion">
           {champions.map((champ) => {
@@ -50,6 +79,7 @@ const GuideForm = ({ champions, runes, items, baseApiURL, version }) => {
             );
           })}
         </select>
+        <br />
         <label>Select Primary Rune:</label>
         <img src={`${baseApiURL}img/${primaryRuneImage}`} />
         <select
@@ -57,19 +87,20 @@ const GuideForm = ({ champions, runes, items, baseApiURL, version }) => {
             handleChange(event);
             handlePrimaryRuneChange(event);
           }}
-          name="primary-rune"
-          id="primary-rune"
+          name="primaryRune"
+          id="primaryRune"
         >
-          {runes.map((rune) => {
-            if (rune.icon != secondaryRuneImage) {
+          {runes
+            .filter((rune) => rune.icon != secondaryRuneImage)
+            .map((rune) => {
               return (
                 <option key={rune.name} value={rune.name}>
                   {rune.name}
                 </option>
               );
-            }
-          })}
+            })}
         </select>
+        <br />
 
         <label>Select Secondary Rune:</label>
         <img src={`${baseApiURL}img/${secondaryRuneImage}`} />
@@ -78,19 +109,64 @@ const GuideForm = ({ champions, runes, items, baseApiURL, version }) => {
             handleChange(event);
             handleSecondaryRuneChange(event);
           }}
-          name="secondary-rune"
-          id="secondary-rune"
+          name="secondaryRune"
+          id="secondaryRune"
         >
-          {runes.map((rune) => {
-            if (rune.icon != primaryRuneImage) {
+          {runes
+            .filter((rune) => rune.icon != primaryRuneImage)
+            .map((rune) => {
               return (
                 <option key={rune.name} value={rune.name}>
                   {rune.name}
                 </option>
               );
-            }
-          })}
+            })}
         </select>
+        <br />
+
+        <label>Select First Summoner Spell:</label>
+        <img src={`${baseApiURL}${version}/img/spell/${firstSpellImage}`} />
+        <select
+          onChange={(event) => {
+            handleChange(event);
+            handleFirstSpellChange(event);
+          }}
+          name="firstSpell"
+          id="firstSpell"
+        >
+          {summonerSpells
+            .filter((spell) => spell.image.full != secondSpellImage)
+            .map((spell) => {
+              return (
+                <option key={spell.name} value={spell.name}>
+                  {spell.name}
+                </option>
+              );
+            })}
+        </select>
+        <br />
+
+        <label>Select Second Summoner Spell:</label>
+        <img src={`${baseApiURL}${version}/img/spell/${secondSpellImage}`} />
+        <select
+          onChange={(event) => {
+            handleChange(event);
+            handleSecondSpellChange(event);
+          }}
+          name="secondSpell"
+          id="secondSpell"
+        >
+          {summonerSpells
+            .filter((spell) => spell.image.full != firstSpellImage)
+            .map((spell) => {
+              return (
+                <option key={spell.name} value={spell.name}>
+                  {spell.name}
+                </option>
+              );
+            })}
+        </select>
+        <br />
       </form>
     </div>
   );
