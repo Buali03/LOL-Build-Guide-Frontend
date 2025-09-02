@@ -15,6 +15,7 @@ import {
 import ChampionsList from "./components/lol/champions-list/champions-list";
 import ChampionDetails from "./components/lol/champion-details/champion-details";
 import NavBar from "./components/NavBar/NavBar";
+import GuideForm from "./components/lol/guide-form/guide-form";
 
 const versionApiURL = import.meta.env.VITE_VERSION_API;
 const baseApiURL = import.meta.env.VITE_BASE_API;
@@ -77,6 +78,7 @@ function App() {
             />
           }
         />
+        <Route path="/lolguides/new" element={<GuideForm />} />
       </Routes>
     </Router>
   );
