@@ -22,6 +22,8 @@ const baseApiURL = import.meta.env.VITE_BASE_API;
 
 function App() {
   const [champions, setChampions] = useState([]);
+  const [runes, setRunes] = useState([]);
+  const [items, setItems] = useState([]);
   const [version, setVersion] = useState();
 
   const tagIcons = {
@@ -33,14 +35,21 @@ function App() {
     Support: GiAngelWings,
   };
 
-  const getChampions = async () => {
+  const getVersion = async () => {
     try {
       const response = await axios.get(versionApiURL);
       const latest = response.data[0];
       setVersion(latest);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  const getChampions = async () => {
+    try {
+      getVersion();
       const res = await axios.get(
-        `${baseApiURL}${latest}/data/en_US/champion.json`
+        `${baseApiURL}${version}/data/en_US/champion.json`
       );
       setChampions(Object.values(res.data.data));
     } catch (error) {
@@ -48,8 +57,34 @@ function App() {
     }
   };
 
+  const getRunes = async () => {
+    try {
+      getVersion();
+      const res = await axios.get(
+        `${baseApiURL}${version}/data/en_US/runesReforged.json`
+      );
+      setRunes(Object.values(res.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getItems = async () => {
+    try {
+      getVersion();
+      const res = await axios.get(
+        `${baseApiURL}${version}/data/en_US/item.json`
+      );
+      setItems(Object.values(res.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getChampions();
+    getRunes();
+    getItems();
   }, []);
 
   return (
@@ -78,7 +113,12 @@ function App() {
             />
           }
         />
-        <Route path="/lolguides/new" element={<GuideForm />} />
+        <Route
+          path="/lolguides/new"
+          element={
+            <GuideForm champions={champions} runes={runes} items={items} />
+          }
+        />
       </Routes>
     </Router>
   );

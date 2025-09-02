@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-const GuideForm = () => {
+const GuideForm = ({ champions }) => {
   const navigate = useNavigate();
 
   const [lolGuide, setLOLGuide] = useState([]);
@@ -13,13 +13,27 @@ const GuideForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLOLGuide([...lolGuide, newLOLGuide]);
+    setNewLOLGuide();
     console.log("All guides ", lolGuide);
     navigate("/lolguides/champions");
   };
   return (
     <div>
       <h1>Create Guide</h1>
-      <form></form>
+      <form onSubmit={handleSubmit}>
+        <label>Guide Title:</label>
+        <input id="title" name="title" type="text" onChange={handleChange} />
+        <label>Champion:</label>
+        <select>
+          {champions.map((champ) => {
+            return (
+              <option key={champ.id} value={champ.id}>
+                {champ.id}
+              </option>
+            );
+          })}
+        </select>
+      </form>
     </div>
   );
 };
