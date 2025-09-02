@@ -48,7 +48,6 @@ function App() {
 
   const getChampions = async () => {
     try {
-      await getVersion();
       const res = await axios.get(
         `${baseApiURL}${version}/data/en_US/champion.json`
       );
@@ -60,7 +59,6 @@ function App() {
 
   const getRunes = async () => {
     try {
-      await getVersion();
       const res = await axios.get(
         `${baseApiURL}${version}/data/en_US/runesReforged.json`
       );
@@ -72,7 +70,6 @@ function App() {
 
   const getItems = async () => {
     try {
-      await getVersion();
       const res = await axios.get(
         `${baseApiURL}${version}/data/en_US/item.json`
       );
@@ -84,7 +81,6 @@ function App() {
 
   const getSummonerSpells = async () => {
     try {
-      await getVersion();
       const res = await axios.get(
         `${baseApiURL}${version}/data/en_US/summoner.json`
       );
@@ -109,6 +105,8 @@ function App() {
   };
 
   useEffect(() => {
+    getVersion();
+    if (!version) return;
     getChampions();
     getRunes();
     getItems();
