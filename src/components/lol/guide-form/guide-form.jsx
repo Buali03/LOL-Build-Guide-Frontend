@@ -12,48 +12,56 @@ const GuideForm = ({
   const navigate = useNavigate();
 
   const [lolGuide, setLOLGuide] = useState([]);
-  const [newLOLGuide, setNewLOLGuide] = useState({});
-  const [primaryRuneImage, setPrimaryRuneImage] = useState(
-    "perk-images/Styles/7200_Domination.png"
-  );
-  const [secondaryRuneImage, setSecondaryRuneImage] = useState(
-    "perk-images/Styles/7203_Whimsy.png"
-  );
-  const [firstSpellImage, setFirstSpellImage] = useState("SummonerBarrier.png");
-  const [secondSpellImage, setSecondSpellImage] = useState(
-    "SummonerExhaust.png"
-  );
+  const [newLOLGuide, setNewLOLGuide] = useState({
+    title: "",
+    champion: null,
+    primaryRune: null,
+    secondaryRune: null,
+    firstSpell: null,
+    secondSpell: null,
+  });
+  // const [primaryRuneImage, setPrimaryRuneImage] = useState(
+  //   "perk-images/Styles/7200_Domination.png"
+  // );
+  // const [secondaryRuneImage, setSecondaryRuneImage] = useState(
+  //   "perk-images/Styles/7203_Whimsy.png"
+  // );
+  // const [firstSpellImage, setFirstSpellImage] = useState("SummonerBarrier.png");
+  // const [secondSpellImage, setSecondSpellImage] = useState(
+  //   "SummonerExhaust.png"
+  // );
 
   const handleChange = async (event) => {
-    setNewLOLGuide({ ...newLOLGuide, [event.target.name]: event.target.value });
+    const data = JSON.parse(event.target.value);
+    setNewLOLGuide({ ...newLOLGuide, [event.target.name]: data });
     console.log("Guide: ", newLOLGuide);
   };
 
-  const handlePrimaryRuneChange = async (event) => {
-    const selectedRune = runes.find((rune) => rune.name === event.target.value);
-    setPrimaryRuneImage(selectedRune.icon);
-    // console.log("Primary Rune: ", primaryRuneImage);
-  };
-  const handleSecondaryRuneChange = async (event) => {
-    const selectedRune = runes.find((rune) => rune.name === event.target.value);
-    setSecondaryRuneImage(selectedRune.icon);
-    // console.log("Secondary Rune: ", secondaryRuneImage);
-  };
+  // const handlePrimaryRuneChange = async (event) => {
+  //   const selectedRune = runes.find((rune) => rune.name === event.target.value);
+  //   setPrimaryRuneImage(selectedRune.icon);
+  // };
 
-  const handleFirstSpellChange = async (event) => {
-    const selectedSpell = summonerSpells.find(
-      (spell) => spell.name === event.target.value
-    );
-    setFirstSpellImage(selectedSpell.image.full);
-    console.log("First Spell: ", firstSpellImage);
-  };
-  const handleSecondSpellChange = async (event) => {
-    const selectedSpell = summonerSpells.find(
-      (spell) => spell.name === event.target.value
-    );
-    setSecondSpellImage(selectedSpell.image.full);
-    console.log("Second Spell: ", secondSpellImage);
-  };
+  // const handleSecondaryRuneChange = async (event) => {
+  //   const selectedRune = runes.find((rune) => rune.name === event.target.value);
+  //   setSecondaryRuneImage(selectedRune.icon);
+  // };
+
+  // const handleFirstSpellChange = async (event) => {
+  //   const selectedSpell = summonerSpells.find(
+  //     (spell) => spell.name === event.target.value
+  //   );
+  //   setFirstSpellImage(selectedSpell.image.full);
+  //   console.log("First Spell: ", firstSpellImage);
+  // };
+
+  // const handleSecondSpellChange = async (event) => {
+  //   const selectedSpell = summonerSpells.find(
+  //     (spell) => spell.name === event.target.value
+  //   );
+  //   setSecondSpellImage(selectedSpell.image.full);
+  //   console.log("Second Spell: ", secondSpellImage);
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -73,7 +81,13 @@ const GuideForm = ({
         <select onChange={handleChange} name="champion" id="champion">
           {champions.map((champ) => {
             return (
-              <option key={champ.id} value={champ.id}>
+              <option
+                key={champ.id}
+                value={JSON.stringify({
+                  name: champ.id,
+                  image: champ.image.full,
+                })}
+              >
                 {champ.id}
               </option>
             );
