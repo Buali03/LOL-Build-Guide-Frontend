@@ -47,7 +47,7 @@ function App() {
 
   const getChampions = async () => {
     try {
-      getVersion();
+      await getVersion();
       const res = await axios.get(
         `${baseApiURL}${version}/data/en_US/champion.json`
       );
@@ -59,7 +59,7 @@ function App() {
 
   const getRunes = async () => {
     try {
-      getVersion();
+      await getVersion();
       const res = await axios.get(
         `${baseApiURL}${version}/data/en_US/runesReforged.json`
       );
@@ -71,7 +71,7 @@ function App() {
 
   const getItems = async () => {
     try {
-      getVersion();
+      await getVersion();
       const res = await axios.get(
         `${baseApiURL}${version}/data/en_US/item.json`
       );
@@ -85,7 +85,7 @@ function App() {
     getChampions();
     getRunes();
     getItems();
-  }, []);
+  }, [version]);
 
   return (
     <Router>
@@ -116,7 +116,13 @@ function App() {
         <Route
           path="/lolguides/new"
           element={
-            <GuideForm champions={champions} runes={runes} items={items} />
+            <GuideForm
+              champions={champions}
+              runes={runes}
+              items={items}
+              baseApiURL={baseApiURL}
+              version={version}
+            />
           }
         />
       </Routes>
