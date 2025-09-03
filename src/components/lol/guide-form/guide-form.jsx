@@ -12,6 +12,14 @@ const GuideForm = ({
 }) => {
   const navigate = useNavigate();
   const [lolGuide, setLOLGuide] = useState([]);
+  // const [selectedItems, setSelectedItems] = useState([
+  //   "Overlord's Bloodmail",
+  //   "Unending Despair",
+  //   "Blackfire Torch",
+  //   "Kaenic Rookern",
+  //   "Trailblazer",
+  //   "Manamune",
+  // ]);
   const [newLOLGuide, setNewLOLGuide] = useState({
     title: "",
     champion: { name: "Aatrox", image: "Aatrox.png" },
@@ -32,6 +40,14 @@ const GuideForm = ({
     fifthItem: { name: "Trailblazer", image: "3002.png" },
     sixthItem: { name: "Manamune", image: "3004.png" },
   });
+  const selectedItems = [
+    newLOLGuide.firstItem?.name,
+    newLOLGuide.secondItem?.name,
+    newLOLGuide.thirdItem?.name,
+    newLOLGuide.fourthItem?.name,
+    newLOLGuide.fifthItem?.name,
+    newLOLGuide.sixthItem?.name,
+  ];
 
   const handleChange = async (event) => {
     let data;
@@ -41,6 +57,14 @@ const GuideForm = ({
       data = event.target.value;
     }
     setNewLOLGuide({ ...newLOLGuide, [event.target.name]: data });
+    // setSelectedItems([
+    //   newLOLGuide.firstItem.name,
+    //   newLOLGuide.secondItem.name,
+    //   newLOLGuide.thirdItem.name,
+    //   newLOLGuide.fourthItem.name,
+    //   newLOLGuide.fifthItem.name,
+    //   newLOLGuide.sixthItem.name,
+    // ]);
     console.log("Guide: ", newLOLGuide);
   };
 
@@ -250,29 +274,42 @@ const GuideForm = ({
                 "fourthItem",
                 "fifthItem",
                 "sixthItem",
-              ].map((itemSlot) => (
-                <div>
-                  <img
-                    src={`${baseApiURL}${version}/img/item/${newLOLGuide[itemSlot]?.image}`}
-                  />
-                  <label>{itemSlot}</label>
-                  <select onChange={handleChange} name={itemSlot} id={itemSlot}>
-                    {items.map((item) => {
-                      return (
-                        <option
-                          key={item.name}
-                          value={JSON.stringify({
-                            name: item.name,
-                            image: item.image.full,
-                          })}
-                        >
-                          {item.name}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
-              ))}
+              ].map((itemSlot, index) => {
+                const currentItem = newLOLGuide?.[itemSlot];
+                return (
+                  <div key={itemSlot}>
+                    <span>{index + 1}</span>
+                    <img
+                      src={`${baseApiURL}${version}/img/item/${currentItem.image}`}
+                    />
+                    <select
+                      onChange={handleChange}
+                      name={itemSlot}
+                      id={itemSlot}
+                    >
+                      {items
+                        .filter(
+                          (item) =>
+                            item.name === currentItem.name ||
+                            !selectedItems?.includes?.(item.name)
+                        )
+                        .map((item) => {
+                          return (
+                            <option
+                              key={`${item.name}-${item.image.full}`}
+                              value={JSON.stringify({
+                                name: item.name,
+                                image: item.image.full,
+                              })}
+                            >
+                              {item.name}
+                            </option>
+                          );
+                        })}
+                    </select>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
