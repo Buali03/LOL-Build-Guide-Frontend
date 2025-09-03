@@ -25,12 +25,12 @@ const GuideForm = ({
     },
     firstSpell: { name: "Barrier", image: "SummonerBarrier.png" },
     secondSpell: { name: "Exhaust", image: "SummonerBoost.png" },
-    firstItem: { name: "B. F. Sword", image: "1038.png" },
-    secondItem: { name: "Needlessly Large Rod", image: "1058.png" },
-    thirdItem: { name: "Seraph's Embrace", image: "323040.png" },
-    fourthItem: { name: "Mejai's Soulstealer", image: "3041.png" },
-    fifthItem: { name: "Muramana", image: "223042.png" },
-    sixthItem: { name: "Fimbulwinter", image: "223121.png" },
+    firstItem: { name: "Overlord's Bloodmail", image: "447111.png" },
+    secondItem: { name: "Unending Despair", image: "2502.png" },
+    thirdItem: { name: "Blackfire Torch", image: "2503.png" },
+    fourthItem: { name: "Kaenic Rookern", image: "2504.png" },
+    fifthItem: { name: "Trailblazer", image: "3002.png" },
+    sixthItem: { name: "Manamune", image: "3004.png" },
   });
 
   const handleChange = async (event) => {

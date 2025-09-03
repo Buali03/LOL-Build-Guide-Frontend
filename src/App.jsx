@@ -74,8 +74,9 @@ function App() {
         `${baseApiURL}${version}/data/en_US/item.json`
       );
       const filteredItems = Object.values(res.data.data).filter((item) => {
-        return item.gold.base >= 1150;
+        return item.gold.base > 500 && item.maps["11"] === true && !item.into;
       });
+      console.log(filteredItems);
       setItems(filteredItems);
     } catch (error) {
       console.log(error);
