@@ -266,6 +266,7 @@ const GuideForm = ({
                 </div>
               </div>
             </div>
+            <label className="guide-form-label">Select Items:</label>
             <div className="guide-form-item-container">
               {[
                 "firstItem",
@@ -277,12 +278,16 @@ const GuideForm = ({
               ].map((itemSlot, index) => {
                 const currentItem = newLOLGuide?.[itemSlot];
                 return (
-                  <div key={itemSlot}>
-                    <span>{index + 1}</span>
-                    <img
-                      src={`${baseApiURL}${version}/img/item/${currentItem.image}`}
-                    />
+                  <div className="guide-form-item" key={itemSlot}>
+                    <div className="guide-form-item-figure">
+                      <span className="guide-form-item-slot">{index + 1}</span>
+                      <img
+                        className="guide-form-item-img"
+                        src={`${baseApiURL}${version}/img/item/${currentItem.image}`}
+                      />
+                    </div>
                     <select
+                      className="guide-form-item-select"
                       onChange={handleChange}
                       name={itemSlot}
                       id={itemSlot}

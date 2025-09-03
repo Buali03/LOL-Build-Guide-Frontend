@@ -78,6 +78,55 @@
   background-color: rgb(24, 24, 65);
   border: 2px solid gold;
 }
+/* Item selection css */
+.guide-form-item-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.guide-form-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guide-form-item-figure {
+  position: relative;
+  width: 100%;
+}
+
+.guide-form-item-img {
+  /* display: block; */
+  margin: 10px 0px;
+  width: 95%;
+  border-radius: 8px;
+  border: 2px solid gold;
+}
+
+.guide-form-item-slot {
+  position: absolute;
+  margin: 17px 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+  border: 1px solid white;
+}
+
+.guide-form-item-select {
+  margin-top: 8px;
+  width: 95%;
+  padding: 6px 8px;
+  border: 2px solid gold;
+  color: gold;
+  border-radius: 6px;
+  background-color: rgb(24, 24, 65);
+}
 
 /* Submit button */
 .guide-form-submit {
