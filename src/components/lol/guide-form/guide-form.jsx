@@ -11,7 +11,6 @@ const GuideForm = ({
   version,
 }) => {
   const navigate = useNavigate();
-
   const [lolGuide, setLOLGuide] = useState([]);
   const [newLOLGuide, setNewLOLGuide] = useState({
     title: "",
@@ -26,6 +25,12 @@ const GuideForm = ({
     },
     firstSpell: { name: "Barrier", image: "SummonerBarrier.png" },
     secondSpell: { name: "Exhaust", image: "SummonerBoost.png" },
+    firstItem: { name: "B. F. Sword", image: "1038.png" },
+    secondItem: { name: "Needlessly Large Rod", image: "1058.png" },
+    thirdItem: { name: "Seraph's Embrace", image: "323040.png" },
+    fourthItem: { name: "Mejai's Soulstealer", image: "3041.png" },
+    fifthItem: { name: "Muramana", image: "223042.png" },
+    sixthItem: { name: "Fimbulwinter", image: "223121.png" },
   });
 
   const handleChange = async (event) => {
@@ -237,7 +242,40 @@ const GuideForm = ({
                 </div>
               </div>
             </div>
+            <div className="guide-form-item-container">
+              {[
+                "firstItem",
+                "secondItem",
+                "thirdItem",
+                "fourthItem",
+                "fifthItem",
+                "sixthItem",
+              ].map((itemSlot) => (
+                <div>
+                  <img
+                    src={`${baseApiURL}${version}/img/item/${newLOLGuide[itemSlot]?.image}`}
+                  />
+                  <label>{itemSlot}</label>
+                  <select onChange={handleChange} name={itemSlot} id={itemSlot}>
+                    {items.map((item) => {
+                      return (
+                        <option
+                          key={item.name}
+                          value={JSON.stringify({
+                            name: item.name,
+                            image: item.image.full,
+                          })}
+                        >
+                          {item.name}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              ))}
+            </div>
           </div>
+
           <br />
           <button type="submit" className="guide-form-submit">
             Save Guide

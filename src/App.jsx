@@ -73,7 +73,10 @@ function App() {
       const res = await axios.get(
         `${baseApiURL}${version}/data/en_US/item.json`
       );
-      setItems(Object.values(res.data));
+      const filteredItems = Object.values(res.data.data).filter((item) => {
+        return item.gold.base >= 1150;
+      });
+      setItems(filteredItems);
     } catch (error) {
       console.log(error);
     }
