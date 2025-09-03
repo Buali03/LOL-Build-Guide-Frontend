@@ -1,0 +1,91 @@
+.guide-form-container {
+  background-color: #333356;
+  width: 700px;
+  border-radius: 12px;
+  border: 3px solid gold;
+  padding: 50px;
+}
+
+.guide-form-label {
+  font-size: 20px;
+}
+
+/* Page title */
+.guide-form-title {
+  font-size: 40px;
+  text-align: center;
+}
+
+/* Guide title */
+.guide-form-title-input {
+  margin: 10px 0px;
+  height: 30px;
+  width: 650px;
+  font-size: 20px;
+  padding: 15px;
+  color: gold;
+  background-color: rgb(24, 24, 65);
+  border: 2px solid gold;
+}
+
+/* Champion selection css */
+.guide-form-champion-div {
+  display: flex;
+  margin: 10px 0px;
+}
+.guide-form-champion-img {
+  width: 90px;
+  border: 2px solid gold;
+}
+.guide-form-champion-select {
+  padding: 15px;
+  margin-left: 20px;
+  width: 575px;
+  font-size: 25px;
+  color: gold;
+  background-color: rgb(24, 24, 65);
+  border: 2px solid gold;
+}
+
+/* Rune and spell selection css */
+.guide-form-rune-spell-container-div {
+  margin: 0 auto;
+}
+.guide-form-rune-spell-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+.guide-form-rune-spell-div {
+  margin: 5px 0px;
+}
+.guide-form-rune-spell-details {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.guide-form-rune-spell-img {
+  height: 60px;
+  border: 3px solid gold;
+}
+.guide-form-rune-spell-select {
+  padding: 15px;
+  margin-left: 10px;
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
+  color: gold;
+  background-color: rgb(24, 24, 65);
+  border: 2px solid gold;
+}
+
+/* Submit button */
+.guide-form-submit {
+  margin: 5px 0px;
+  width: 325px;
+  height: 50px;
+  background-color: red;
+  border: 2px solid gold;
+  color: white;
+  font-size: 20px;
+}
