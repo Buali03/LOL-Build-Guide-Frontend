@@ -12,10 +12,13 @@ import {
   GiAngelWings,
 } from "react-icons/gi";
 
+// league of legend components
 import ChampionsList from "./components/lol/champions-list/champions-list";
 import ChampionDetails from "./components/lol/champion-details/champion-details";
 import NavBar from "./components/NavBar/NavBar";
 import GuideForm from "./components/lol/guide-form/guide-form";
+
+// user components
 import LoginForm from "./components/user/login-form/login-form";
 import SignUpForm from "./components/user/signup-form/signup-form";
 
