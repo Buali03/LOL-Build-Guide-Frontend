@@ -16,6 +16,8 @@ import ChampionsList from "./components/lol/champions-list/champions-list";
 import ChampionDetails from "./components/lol/champion-details/champion-details";
 import NavBar from "./components/NavBar/NavBar";
 import GuideForm from "./components/lol/guide-form/guide-form";
+import LoginForm from "./components/user/login-form/login-form";
+import SignUpForm from "./components/user/signup-form/signup-form";
 
 const versionApiURL = import.meta.env.VITE_VERSION_API;
 const baseApiURL = import.meta.env.VITE_BASE_API;
@@ -26,6 +28,23 @@ function App() {
   const [items, setItems] = useState([]);
   const [summonerSpells, setSummonerSpells] = useState([]);
   const [version, setVersion] = useState();
+
+  // Auth:
+  const [token, setToken] = useState(localStorage.getItem("token"));
+
+  function handleLogin(newToken) {
+    setToken(newToken);
+  }
+
+  function handleLogout() {
+    setToken(null);
+    localStorage.removeItem("token");
+  }
+
+  if (token) {
+    const decodedToken = jwtDecode(token);
+    console.log(decodedToken);
+  }
 
   const tagIcons = {
     Fighter: GiBattleAxe,
@@ -119,8 +138,13 @@ function App() {
 
   return (
     <Router>
-      <NavBar />
+      <NavBar token={token} onLogout={handleLogout} />
       <Routes>
+        <Route
+          path="/user/login"
+          element={<LoginForm onLogin={handleLogin} />}
+        />
+        <Route path="/user/signup" element={<SignUpForm />} />
         <Route
           path="/lolguides/champions"
           element={

@@ -4,6 +4,12 @@ import "./NavBar.css";
 const NavBar = () => {
   return (
     <nav className="navbar">
+      <Link to="/user/login" className="nav-link">
+        Log in
+      </Link>
+      <Link to="/user/signup" className="nav-link">
+        Sign up
+      </Link>
       <Link to="/lolguides/champions" className="nav-link">
         Champions
       </Link>

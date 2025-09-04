@@ -79,250 +79,248 @@ const GuideForm = ({
     <div className="main-content">
       <div className="guide-form-container">
         <h1 className="guide-form-title">Create Guide</h1>
-        <form className="guide-form" onSubmit={handleSubmit}>
-          <label className="guide-form-label">Guide Title:</label>
-          <br />
-          <input
-            className="guide-form-title-input"
-            id="title"
-            name="title"
-            type="text"
-            onChange={handleChange}
-          />
-          <br />
-          <label className="guide-form-label">Champion:</label>
-          <br />
-          <div className="guide-form-champion-div">
-            <img
-              className="guide-form-champion-img"
-              src={`${baseApiURL}${version}/img/champion/${newLOLGuide.champion.image}`}
-            />
-            <select
-              className="guide-form-champion-select"
+        {champions && items && runes && summonerSpells ? (
+          <form className="guide-form" onSubmit={handleSubmit}>
+            <label className="guide-form-label">Guide Title:</label>
+            <input
+              className="guide-form-title-input"
+              id="title"
+              name="title"
+              type="text"
               onChange={handleChange}
-              name="champion"
-              id="champion"
-            >
-              {champions.map((champ) => {
-                return (
-                  <option
-                    key={champ.id}
-                    value={JSON.stringify({
-                      name: champ.id,
-                      image: champ.image.full,
-                    })}
-                  >
-                    {champ.id}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <br />
-          <div className="guide-form-rune-spell-container-div">
-            <div className="guide-form-rune-spell-row">
-              <div className="guide-form-rune-spell-div">
-                <label className="guide-form-label">Select Primary Rune:</label>
-                <div className="guide-form-rune-spell-details">
-                  <img
-                    className="guide-form-rune-spell-img"
-                    src={`${baseApiURL}img/${newLOLGuide.primaryRune.image}`}
-                  />
-                  <select
-                    className="guide-form-rune-spell-select"
-                    onChange={handleChange}
-                    name="primaryRune"
-                    id="primaryRune"
-                  >
-                    {runes
-                      .filter(
-                        (rune) => rune.name != newLOLGuide.secondaryRune.name
-                      )
-                      .map((rune) => {
-                        return (
-                          <option
-                            key={rune.name}
-                            value={JSON.stringify({
-                              name: rune.name,
-                              image: rune.icon,
-                            })}
-                          >
-                            {rune.name}
-                          </option>
-                        );
+            />
+            <label className="guide-form-label">Champion:</label>
+            <div className="guide-form-champion-div">
+              <img
+                className="guide-form-champion-img"
+                src={`${baseApiURL}${version}/img/champion/${newLOLGuide.champion.image}`}
+              />
+              <select
+                className="guide-form-champion-select"
+                onChange={handleChange}
+                name="champion"
+                id="champion"
+              >
+                {champions.map((champ) => {
+                  return (
+                    <option
+                      key={champ.id}
+                      value={JSON.stringify({
+                        name: champ.id,
+                        image: champ.image.full,
                       })}
-                  </select>
-                </div>
-              </div>
-              <br />
-              <br />
-
-              <div className="guide-form-rune-spell-div">
-                <label className="guide-form-label">
-                  Select Secondary Rune:
-                </label>
-                <div className="guide-form-rune-spell-details">
-                  <img
-                    className="guide-form-rune-spell-img"
-                    src={`${baseApiURL}img/${newLOLGuide.secondaryRune.image}`}
-                  />
-                  <select
-                    className="guide-form-rune-spell-select"
-                    onChange={handleChange}
-                    name="secondaryRune"
-                    id="secondaryRune"
-                  >
-                    {runes
-                      .filter(
-                        (rune) => rune.name != newLOLGuide.primaryRune.name
-                      )
-                      .map((rune) => {
-                        return (
-                          <option
-                            key={rune.name}
-                            value={JSON.stringify({
-                              name: rune.name,
-                              image: rune.icon,
-                            })}
-                          >
-                            {rune.name}
-                          </option>
-                        );
-                      })}
-                  </select>
-                </div>
-              </div>
-            </div>
-            <br />
-
-            <div className="guide-form-rune-spell-row">
-              <div className="guide-form-rune-spell-div">
-                <label className="guide-form-label">Select First Spell:</label>
-                <div className="guide-form-rune-spell-details">
-                  <img
-                    className="guide-form-rune-spell-img"
-                    src={`${baseApiURL}${version}/img/spell/${newLOLGuide.firstSpell.image}`}
-                  />
-                  <select
-                    className="guide-form-rune-spell-select"
-                    onChange={handleChange}
-                    name="firstSpell"
-                    id="firstSpell"
-                  >
-                    {summonerSpells
-                      .filter(
-                        (spell) => spell.name != newLOLGuide.secondSpell.name
-                      )
-                      .map((spell) => {
-                        return (
-                          <option
-                            key={spell.name}
-                            value={JSON.stringify({
-                              name: spell.name,
-                              image: spell.image.full,
-                            })}
-                          >
-                            {spell.name}
-                          </option>
-                        );
-                      })}
-                  </select>
-                </div>
-              </div>
-              <br />
-
-              <br />
-              <div className="guide-form-rune-spell-div">
-                <label className="guide-form-label">Select Second Spell:</label>
-                <div className="guide-form-rune-spell-details">
-                  <img
-                    className="guide-form-rune-spell-img"
-                    src={`${baseApiURL}${version}/img/spell/${newLOLGuide.secondSpell.image}`}
-                  />
-                  <select
-                    className="guide-form-rune-spell-select"
-                    onChange={handleChange}
-                    name="secondSpell"
-                    id="secondSpell"
-                  >
-                    {summonerSpells
-                      .filter(
-                        (spell) => spell.name != newLOLGuide.firstSpell.name
-                      )
-                      .map((spell) => {
-                        return (
-                          <option
-                            key={spell.name}
-                            value={JSON.stringify({
-                              name: spell.name,
-                              image: spell.image.full,
-                            })}
-                          >
-                            {spell.name}
-                          </option>
-                        );
-                      })}
-                  </select>
-                </div>
-              </div>
-            </div>
-            <label className="guide-form-label">Select Items:</label>
-            <div className="guide-form-item-container">
-              {[
-                "firstItem",
-                "secondItem",
-                "thirdItem",
-                "fourthItem",
-                "fifthItem",
-                "sixthItem",
-              ].map((itemSlot, index) => {
-                const currentItem = newLOLGuide?.[itemSlot];
-                return (
-                  <div className="guide-form-item" key={itemSlot}>
-                    <div className="guide-form-item-figure">
-                      <span className="guide-form-item-slot">{index + 1}</span>
-                      <img
-                        className="guide-form-item-img"
-                        src={`${baseApiURL}${version}/img/item/${currentItem.image}`}
-                      />
-                    </div>
-                    <select
-                      className="guide-form-item-select"
-                      onChange={handleChange}
-                      name={itemSlot}
-                      id={itemSlot}
                     >
-                      {items
+                      {champ.id}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div className="guide-form-rune-spell-container-div">
+              <div className="guide-form-rune-spell-row">
+                <div className="guide-form-rune-spell-div">
+                  <label className="guide-form-label">
+                    Select Primary Rune:
+                  </label>
+                  <div className="guide-form-rune-spell-details">
+                    <img
+                      className="guide-form-rune-spell-img"
+                      src={`${baseApiURL}img/${newLOLGuide.primaryRune.image}`}
+                    />
+                    <select
+                      className="guide-form-rune-spell-select"
+                      onChange={handleChange}
+                      name="primaryRune"
+                      id="primaryRune"
+                    >
+                      {runes
                         .filter(
-                          (item) =>
-                            item.name === currentItem.name ||
-                            !selectedItems?.includes?.(item.name)
+                          (rune) => rune.name != newLOLGuide.secondaryRune.name
                         )
-                        .map((item) => {
+                        .map((rune) => {
                           return (
                             <option
-                              key={`${item.name}-${item.image.full}`}
+                              key={rune.name}
                               value={JSON.stringify({
-                                name: item.name,
-                                image: item.image.full,
+                                name: rune.name,
+                                image: rune.icon,
                               })}
                             >
-                              {item.name}
+                              {rune.name}
                             </option>
                           );
                         })}
                     </select>
                   </div>
-                );
-              })}
-            </div>
-          </div>
+                </div>
 
-          <br />
-          <button type="submit" className="guide-form-submit">
-            Save Guide
-          </button>
-        </form>
+                <div className="guide-form-rune-spell-div">
+                  <label className="guide-form-label">
+                    Select Secondary Rune:
+                  </label>
+                  <div className="guide-form-rune-spell-details">
+                    <img
+                      className="guide-form-rune-spell-img"
+                      src={`${baseApiURL}img/${newLOLGuide.secondaryRune.image}`}
+                    />
+                    <select
+                      className="guide-form-rune-spell-select"
+                      onChange={handleChange}
+                      name="secondaryRune"
+                      id="secondaryRune"
+                    >
+                      {runes
+                        .filter(
+                          (rune) => rune.name != newLOLGuide.primaryRune.name
+                        )
+                        .map((rune) => {
+                          return (
+                            <option
+                              key={rune.name}
+                              value={JSON.stringify({
+                                name: rune.name,
+                                image: rune.icon,
+                              })}
+                            >
+                              {rune.name}
+                            </option>
+                          );
+                        })}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div className="guide-form-rune-spell-row">
+                <div className="guide-form-rune-spell-div">
+                  <label className="guide-form-label">
+                    Select First Spell:
+                  </label>
+                  <div className="guide-form-rune-spell-details">
+                    <img
+                      className="guide-form-rune-spell-img"
+                      src={`${baseApiURL}${version}/img/spell/${newLOLGuide.firstSpell.image}`}
+                    />
+                    <select
+                      className="guide-form-rune-spell-select"
+                      onChange={handleChange}
+                      name="firstSpell"
+                      id="firstSpell"
+                    >
+                      {summonerSpells
+                        .filter(
+                          (spell) => spell.name != newLOLGuide.secondSpell.name
+                        )
+                        .map((spell) => {
+                          return (
+                            <option
+                              key={spell.name}
+                              value={JSON.stringify({
+                                name: spell.name,
+                                image: spell.image.full,
+                              })}
+                            >
+                              {spell.name}
+                            </option>
+                          );
+                        })}
+                    </select>
+                  </div>
+                </div>
+                <div className="guide-form-rune-spell-div">
+                  <label className="guide-form-label">
+                    Select Second Spell:
+                  </label>
+                  <div className="guide-form-rune-spell-details">
+                    <img
+                      className="guide-form-rune-spell-img"
+                      src={`${baseApiURL}${version}/img/spell/${newLOLGuide.secondSpell.image}`}
+                    />
+                    <select
+                      className="guide-form-rune-spell-select"
+                      onChange={handleChange}
+                      name="secondSpell"
+                      id="secondSpell"
+                    >
+                      {summonerSpells
+                        .filter(
+                          (spell) => spell.name != newLOLGuide.firstSpell.name
+                        )
+                        .map((spell) => {
+                          return (
+                            <option
+                              key={spell.name}
+                              value={JSON.stringify({
+                                name: spell.name,
+                                image: spell.image.full,
+                              })}
+                            >
+                              {spell.name}
+                            </option>
+                          );
+                        })}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <label className="guide-form-label">Select Items:</label>
+              <div className="guide-form-item-container">
+                {[
+                  "firstItem",
+                  "secondItem",
+                  "thirdItem",
+                  "fourthItem",
+                  "fifthItem",
+                  "sixthItem",
+                ].map((itemSlot, index) => {
+                  const currentItem = newLOLGuide?.[itemSlot];
+                  return (
+                    <div className="guide-form-item" key={itemSlot}>
+                      <div className="guide-form-item-figure">
+                        <span className="guide-form-item-slot">
+                          {index + 1}
+                        </span>
+                        <img
+                          className="guide-form-item-img"
+                          src={`${baseApiURL}${version}/img/item/${currentItem.image}`}
+                        />
+                      </div>
+                      <select
+                        className="guide-form-item-select"
+                        onChange={handleChange}
+                        name={itemSlot}
+                        id={itemSlot}
+                      >
+                        {items
+                          .filter(
+                            (item) =>
+                              item.name === currentItem.name ||
+                              !selectedItems?.includes?.(item.name)
+                          )
+                          .map((item) => {
+                            return (
+                              <option
+                                key={`${item.name}-${item.image.full}`}
+                                value={JSON.stringify({
+                                  name: item.name,
+                                  image: item.image.full,
+                                })}
+                              >
+                                {item.name}
+                              </option>
+                            );
+                          })}
+                      </select>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <button type="submit" className="guide-form-submit">
+              Save Guide
+            </button>
+          </form>
+        ) : null}
       </div>
     </div>
   );

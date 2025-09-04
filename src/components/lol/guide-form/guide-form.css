@@ -7,7 +7,7 @@
 }
 
 .guide-form-label {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 /* Page title */
@@ -18,7 +18,7 @@
 
 /* Guide title */
 .guide-form-title-input {
-  margin: 10px 0px;
+  margin: 20px 0px;
   height: 30px;
   width: 650px;
   font-size: 20px;
@@ -31,7 +31,7 @@
 /* Champion selection css */
 .guide-form-champion-div {
   display: flex;
-  margin: 10px 0px;
+  margin: 20px 0px;
 }
 .guide-form-champion-img {
   width: 90px;
@@ -57,11 +57,11 @@
   gap: 25px;
 }
 .guide-form-rune-spell-div {
-  margin: 5px 0px;
+  margin: 10px 0px;
 }
 .guide-form-rune-spell-details {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 20px;
 }
 .guide-form-rune-spell-img {
@@ -98,7 +98,7 @@
 
 .guide-form-item-img {
   /* display: block; */
-  margin: 10px 0px;
+  margin: 20px 0px;
   width: 95%;
   border-radius: 8px;
   border: 2px solid gold;
@@ -130,11 +130,11 @@
 
 /* Submit button */
 .guide-form-submit {
-  margin: 5px 0px;
+  margin-top: 50px;
   width: 325px;
   height: 50px;
-  background-color: red;
+  background-color: rgb(82, 4, 4);
   border: 2px solid gold;
   color: white;
-  font-size: 20px;
+  font-size: 25px;
 }
