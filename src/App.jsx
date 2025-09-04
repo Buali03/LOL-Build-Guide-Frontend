@@ -15,8 +15,8 @@ import {
 // league of legend components
 import ChampionsList from "./components/lol/champions-list/champions-list";
 import ChampionDetails from "./components/lol/champion-details/champion-details";
-import NavBar from "./components/NavBar/NavBar";
 import GuideForm from "./components/lol/guide-form/guide-form";
+import NavBar from "./components/NavBar/NavBar";
 
 // user components
 import LoginForm from "./components/user/login-form/login-form";

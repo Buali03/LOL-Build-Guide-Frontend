@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import { createLOLGuide } from "../../../../lib/api";
 import "./guide-form.css";
 
 const GuideForm = ({
@@ -10,17 +11,7 @@ const GuideForm = ({
   baseApiURL,
   version,
 }) => {
-  const navigate = useNavigate();
-  const [lolGuide, setLOLGuide] = useState([]);
-  // const [selectedItems, setSelectedItems] = useState([
-  //   "Overlord's Bloodmail",
-  //   "Unending Despair",
-  //   "Blackfire Torch",
-  //   "Kaenic Rookern",
-  //   "Trailblazer",
-  //   "Manamune",
-  // ]);
-  const [newLOLGuide, setNewLOLGuide] = useState({
+  const formStarter = {
     title: "",
     champion: { name: "Aatrox", image: "Aatrox.png" },
     primaryRune: {
@@ -39,7 +30,10 @@ const GuideForm = ({
     fourthItem: { name: "Kaenic Rookern", image: "2504.png" },
     fifthItem: { name: "Trailblazer", image: "3002.png" },
     sixthItem: { name: "Manamune", image: "3004.png" },
-  });
+  };
+  const navigate = useNavigate();
+  const [lolGuide, setLOLGuide] = useState([]);
+  const [newLOLGuide, setNewLOLGuide] = useState(formStarter);
   const selectedItems = [
     newLOLGuide.firstItem?.name,
     newLOLGuide.secondItem?.name,
@@ -57,21 +51,14 @@ const GuideForm = ({
       data = event.target.value;
     }
     setNewLOLGuide({ ...newLOLGuide, [event.target.name]: data });
-    // setSelectedItems([
-    //   newLOLGuide.firstItem.name,
-    //   newLOLGuide.secondItem.name,
-    //   newLOLGuide.thirdItem.name,
-    //   newLOLGuide.fourthItem.name,
-    //   newLOLGuide.fifthItem.name,
-    //   newLOLGuide.sixthItem.name,
-    // ]);
     console.log("Guide: ", newLOLGuide);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLOLGuide([...lolGuide, newLOLGuide]);
-    setNewLOLGuide();
+    const response = await createLOLGuide(newLOLGuide);
+    setNewLOLGuide(formStarter);
     console.log("All guides ", lolGuide);
     navigate("/lolguides/champions");
   };
