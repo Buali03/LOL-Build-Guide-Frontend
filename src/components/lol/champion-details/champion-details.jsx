@@ -42,7 +42,11 @@ const ChampionDetails = ({ baseApiURL, version, tagIcons }) => {
           </div>
           <p className="champ-info-lore">{thisChamp.lore}</p>
         </div>
-        <ChampionGuideList thisChamp={thisChamp} />
+        <ChampionGuideList
+          thisChamp={thisChamp}
+          baseApiURL={baseApiURL}
+          version={version}
+        />
       </div>
     </div>
   ) : (

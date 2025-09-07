@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { allLOLGuide } from "../../../../lib/api";
 import axios from "axios";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import "./guide-list.css";
 
 const GuideList = ({ baseApiURL, version }) => {
@@ -29,7 +29,7 @@ const GuideList = ({ baseApiURL, version }) => {
                 .toLocaleDateString("en-GB")
                 .replace(/\//g, "-");
               return (
-                <Link to={"/lolguides/:guideId"} key={guide.id}>
+                <Link to={`/lolguides/${guide._id}`} key={guide.id}>
                   <div className="one-guide-preview">
                     <div className="one-guide-preview-img" key={guide.id}>
                       <img
