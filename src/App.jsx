@@ -16,6 +16,7 @@ import {
 import ChampionsList from "./components/lol/champions-list/champions-list";
 import ChampionDetails from "./components/lol/champion-details/champion-details";
 import GuideForm from "./components/lol/guide-form/guide-form";
+import GuideList from "./components/lol/guide-list/guide-list";
 import NavBar from "./components/NavBar/NavBar";
 
 // user components
@@ -98,7 +99,6 @@ function App() {
       const filteredItems = Object.values(res.data.data).filter((item) => {
         return item.gold.base > 500 && item.maps["11"] === true && !item.into;
       });
-      console.log(filteredItems);
       setItems(filteredItems);
     } catch (error) {
       console.log(error);
@@ -183,6 +183,10 @@ function App() {
             />
           }
         />
+        <Route
+          path="/lolguides"
+          element={<GuideList baseApiURL={baseApiURL} version={version} />}
+        ></Route>
       </Routes>
     </Router>
   );
