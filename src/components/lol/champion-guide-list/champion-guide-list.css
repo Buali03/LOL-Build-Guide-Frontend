@@ -64,3 +64,36 @@
   border: 2px solid gold;
   border-radius: 5px;
 }
+
+/* Query row */
+.champion-guide-list-query-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Search input */
+.champion-guide-list-search-bar {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 2px solid gold;
+  border-radius: 6px;
+  width: 200px;
+  outline: none;
+  color: black;
+}
+
+/* Rune filtering and date sorting select  */
+.champion-guide-list-rune-select,
+.champion-guide-list-date-sort {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 2px solid gold;
+  border-radius: 6px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}

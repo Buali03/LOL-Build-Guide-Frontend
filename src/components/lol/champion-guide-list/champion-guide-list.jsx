@@ -39,33 +39,37 @@ const ChampionGuideList = ({ thisChamp, baseApiURL, version }) => {
         {thisChamp.name}'s Build Guides
       </h1>
       <div className="this-champion-guide-list-container">
-        <input
-          type="text"
-          placeholder="Search guide title..."
-          value={searchQuery}
-          onChange={(event) => setSearchQuery(event.target.value)}
-        />
+        <div className="champion-guide-list-query-row">
+          <input
+            className="champion-guide-list-search-bar"
+            type="text"
+            placeholder="Search guide title..."
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+          />
 
-        <select
-          value={runeFilter}
-          onChange={(event) => setRuneFilter(event.target.value)}
-        >
-          <option value="all">All Runes</option>
-          <option value="Domination">Domination</option>
-          <option value="Precision">Precision</option>
-          <option value="Inspiration">Inspiration</option>
-          <option value="Resolve">Resolve</option>
-          <option value="Sorcery">Sorcery</option>
-        </select>
+          <select
+            className="champion-guide-list-rune-select"
+            value={runeFilter}
+            onChange={(event) => setRuneFilter(event.target.value)}
+          >
+            <option value="all">All Runes</option>
+            <option value="Domination">Domination</option>
+            <option value="Precision">Precision</option>
+            <option value="Inspiration">Inspiration</option>
+            <option value="Resolve">Resolve</option>
+            <option value="Sorcery">Sorcery</option>
+          </select>
 
-        <select
-          value={sortOrder}
-          onChange={(event) => setSortOrder(event.target.value)}
-        >
-          <option value="Descending">Order by Newest</option>
-          <option value="Ascending">Order by Oldest</option>
-        </select>
-
+          <select
+            className="champion-guide-list-date-sort"
+            value={sortOrder}
+            onChange={(event) => setSortOrder(event.target.value)}
+          >
+            <option value="Descending">Order by Newest</option>
+            <option value="Ascending">Order by Oldest</option>
+          </select>
+        </div>
         {console.log(filteredGuides)}
         {filteredGuides.map((guide) => {
           const date = new Date(guide.createdAt);
