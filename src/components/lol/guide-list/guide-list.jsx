@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { allLOLGuide } from "../../../../lib/api";
 import axios from "axios";
 import { Link } from "react-router";
+import "./guide-list.css";
 
 const GuideList = ({ baseApiURL, version }) => {
   const [allLOLGuides, setAllLOLGuides] = useState();
@@ -17,33 +18,44 @@ const GuideList = ({ baseApiURL, version }) => {
 
   return (
     <div className="main-content">
-      <div>
-        <h1>All Guides</h1>
-      </div>
-      {allLOLGuides ? (
-        <div>
-          {console.log(allLOLGuides)}
-          <div>
+      <div className="all-guide-list-page">
+        <h1 className="all-guide-list-page-title">All Guides</h1>
+        {allLOLGuides ? (
+          <div className="all-guide-list-container">
+            {console.log(allLOLGuides)}
             {allLOLGuides.map((guide) => {
+              const date = new Date(guide.createdAt);
+              const formattedDate = date
+                .toLocaleDateString("en-GB")
+                .replace(/\//g, "-");
               return (
                 <Link to={"/lolguides/:guideId"} key={guide.id}>
-                  <div key={guide.id}>
-                    <img
-                      src={`${baseApiURL}${version}/img/champion/${guide.champion.image}`}
-                    />
-                    <div>
+                  <div className="one-guide-preview">
+                    <div className="one-guide-preview-img" key={guide.id}>
+                      <img
+                        src={`${baseApiURL}${version}/img/champion/${guide.champion.image}`}
+                      />
+                    </div>
+                    <div className="one-guide-preview-info">
                       <p>
                         {guide.champion.name}'s {guide.title} Build Guide
                       </p>
-                      <p>{guide.createdAt}</p>
+                      <p>Guide Date: {formattedDate}</p>
+                      <p>Created by: {guide.username.username}</p>
+                      <div className="one-guide-preview-rune-info">
+                        <img
+                          src={`${baseApiURL}img/${guide.primaryRune.image}`}
+                        />
+                        <p>{guide.primaryRune.name}</p>
+                      </div>
                     </div>
                   </div>
                 </Link>
               );
             })}
           </div>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </div>
   );
 };

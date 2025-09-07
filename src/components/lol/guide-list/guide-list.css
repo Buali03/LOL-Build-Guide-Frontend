@@ -1,0 +1,72 @@
+/* Page title */
+.all-guide-list-page-title {
+  font-size: 48px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: gold;
+}
+
+/* Guides container */
+.all-guide-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+/* Individual guide preview */
+.one-guide-preview {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(62, 62, 118);
+  border: 2px solid gold;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 500px;
+  transition: transform 0.2s;
+}
+
+.one-guide-preview:hover {
+  transform: scale(1.03);
+}
+
+/* Guide image */
+.one-guide-preview-img {
+  flex: 1;
+  border-right: 2px solid gold;
+}
+
+.one-guide-preview-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Guide info */
+.one-guide-preview-info {
+  flex: 2;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.one-guide-preview-info p {
+  margin: 5px 0;
+  color: #ffd700; /* gold text */
+}
+
+/* Rune info inside guide preview */
+.one-guide-preview-rune-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.one-guide-preview-rune-info img {
+  height: 40px;
+  width: 40px;
+  border: 2px solid gold;
+  border-radius: 5px;
+}
