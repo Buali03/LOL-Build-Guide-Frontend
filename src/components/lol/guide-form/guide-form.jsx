@@ -56,9 +56,15 @@ const GuideForm = ({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!newLOLGuide.title) {
+      console.log("NO TITLE");
+      setNewLOLGuide({
+        ...newLOLGuide,
+        title: `${newLOLGuide.champion.name}'s Build Guide`,
+      });
+    }
     setLOLGuide([...lolGuide, newLOLGuide]);
     const response = await createLOLGuide(newLOLGuide);
-    setNewLOLGuide(formStarter);
     console.log("All guides ", lolGuide);
     navigate("/lolguides/champions");
   };
@@ -68,7 +74,7 @@ const GuideForm = ({
         <h1 className="guide-form-title">Create Guide</h1>
         {champions && items && runes && summonerSpells ? (
           <form className="guide-form" onSubmit={handleSubmit}>
-            <label className="guide-form-label">Guide Title:</label>
+            <label className="guide-form-label">Guide Title: (Optional)</label>
             <input
               className="guide-form-title-input"
               id="title"
