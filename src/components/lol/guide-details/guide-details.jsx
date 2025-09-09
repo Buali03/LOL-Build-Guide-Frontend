@@ -3,8 +3,9 @@ import { showLOLGuide, deleteLOLGuide } from "../../../../lib/api";
 import { useState, useEffect } from "react";
 import "./guide-details.css";
 import { FaArrowRight } from "react-icons/fa";
+import { jwtDecode } from "jwt-decode";
 
-const GuideDetails = ({ baseApiURL, version }) => {
+const GuideDetails = ({ baseApiURL, version, token }) => {
   const navigate = useNavigate();
   const params = useParams();
   const [thisGuide, setThisGuide] = useState();
@@ -126,17 +127,21 @@ const GuideDetails = ({ baseApiURL, version }) => {
               </div>
             ))}
           </div>
-          <div>
-            <Link to={`/lolguides/${params.guideId}/edit`}>Edit Guide</Link>
-          </div>
-          <button
-            onClick={async () => {
-              deleteLOLGuide(params.guideId);
-              navigate("/lolguides");
-            }}
-          >
-            Delete Guide
-          </button>
+          {jwtDecode(token).id === thisGuide.username._id && (
+            <>
+              <div>
+                <Link to={`/lolguides/${params.guideId}/edit`}>Edit Guide</Link>
+              </div>
+              <button
+                onClick={async () => {
+                  deleteLOLGuide(params.guideId);
+                  navigate("/lolguides");
+                }}
+              >
+                Delete Guide
+              </button>
+            </>
+          )}
         </div>
       ) : null}
     </div>

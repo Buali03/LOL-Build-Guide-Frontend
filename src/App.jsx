@@ -187,7 +187,13 @@ function App() {
         />
         <Route
           path="/lolguides/:guideId"
-          element={<GuideDetails baseApiURL={baseApiURL} version={version} />}
+          element={
+            <GuideDetails
+              baseApiURL={baseApiURL}
+              version={version}
+              token={token}
+            />
+          }
         />
         <Route
           path="/lolguides/:guideId/edit"
@@ -199,6 +205,7 @@ function App() {
               items={items}
               runes={runes}
               summonerSpells={summonerSpells}
+              token={token}
             />
           }
         />
