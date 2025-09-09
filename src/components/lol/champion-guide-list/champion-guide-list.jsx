@@ -70,6 +70,9 @@ const ChampionGuideList = ({ thisChamp, baseApiURL, version }) => {
             <option value="Ascending">Order by Oldest</option>
           </select>
         </div>
+
+        {/* {filteredGuides ? ( */}
+
         {console.log(filteredGuides)}
         {filteredGuides.map((guide) => {
           const date = new Date(guide.createdAt);
@@ -101,7 +104,10 @@ const ChampionGuideList = ({ thisChamp, baseApiURL, version }) => {
         })}
       </div>
     </div>
-  ) : null;
+  ) : // ): (
+  //   <h1>No guides found</h1>
+  // )}
+  null;
 };
 
 export default ChampionGuideList;

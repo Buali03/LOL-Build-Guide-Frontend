@@ -12,7 +12,6 @@ const ChampionDetails = ({ baseApiURL, version, tagIcons }) => {
     const response = await axios.get(
       `${baseApiURL}${version}/data/en_US/champion/${champId}.json`
     );
-    console.log(response.data.data[champId]);
     setThisChamp(response.data.data[champId]);
   };
 

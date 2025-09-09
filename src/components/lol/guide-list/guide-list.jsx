@@ -22,7 +22,6 @@ const GuideList = ({ baseApiURL, version }) => {
         <h1 className="all-guide-list-page-title">All Guides</h1>
         {allLOLGuides ? (
           <div className="all-guide-list-container">
-            {console.log(allLOLGuides)}
             {allLOLGuides.map((guide) => {
               const date = new Date(guide.createdAt);
               const formattedDate = date

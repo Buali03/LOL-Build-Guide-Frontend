@@ -18,6 +18,7 @@ import ChampionDetails from "./components/lol/champion-details/champion-details"
 import GuideForm from "./components/lol/guide-form/guide-form";
 import GuideList from "./components/lol/guide-list/guide-list";
 import GuideDetails from "./components/lol/guide-details/guide-details";
+import GuideEdit from "./components/lol/guide-edit/guide-edit";
 import NavBar from "./components/NavBar/NavBar";
 
 // user components
@@ -189,9 +190,22 @@ function App() {
           element={<GuideDetails baseApiURL={baseApiURL} version={version} />}
         />
         <Route
+          path="/lolguides/:guideId/edit"
+          element={
+            <GuideEdit
+              version={version}
+              baseApiURL={baseApiURL}
+              champions={champions}
+              items={items}
+              runes={runes}
+              summonerSpells={summonerSpells}
+            />
+          }
+        />
+        <Route
           path="/lolguides"
           element={<GuideList baseApiURL={baseApiURL} version={version} />}
-        ></Route>
+        />
       </Routes>
     </Router>
   );
