@@ -1,9 +1,11 @@
-import { useParams } from "react-router";
-import { showLOLGuide } from "../../../../lib/api";
+import { Link, useParams, Navigate, useNavigate } from "react-router";
+import { showLOLGuide, deleteLOLGuide } from "../../../../lib/api";
 import { useState, useEffect } from "react";
 import "./guide-details.css";
+import { FaArrowRight } from "react-icons/fa";
 
 const GuideDetails = ({ baseApiURL, version }) => {
+  const navigate = useNavigate();
   const params = useParams();
   const [thisGuide, setThisGuide] = useState();
 
@@ -37,39 +39,66 @@ const GuideDetails = ({ baseApiURL, version }) => {
             </div>
           </div>
 
-          <h2>Runes</h2>
-          <div className="this-guide-runes-section">
-            <div className="this-guide-rune-card">
-              <p>Primary Rune: {thisGuide.primaryRune.name}</p>
-              <img
-                className="this-guide-rune-card-img"
-                src={`${baseApiURL}img/${thisGuide.primaryRune.image}`}
-              />
-            </div>
-            <div className="this-guide-rune-card">
-              <p>Secondary Rune: {thisGuide.secondaryRune.name}</p>
-              <img
-                className="this-guide-rune-card-img"
-                src={`${baseApiURL}img/${thisGuide.secondaryRune.image}`}
-              />
-            </div>
-          </div>
+          <div className="this-guide-runes-spells-container">
+            <div className="this-guide-runes-spells-headers">
+              <h2>Runes</h2>
 
-          <h2>Summoner Spells</h2>
-          <div className="this-guide-spells-section">
-            <div className="this-guide-spell-card">
-              <p>{thisGuide.firstSpell.name}</p>
-              <img
-                className="this-guide-spell-card-img"
-                src={`${baseApiURL}${version}/img/spell/${thisGuide.firstSpell.image}`}
-              />
+              <h2>Summoner Spells</h2>
             </div>
-            <div className="this-guide-spell-card">
-              <p>{thisGuide.secondSpell.name}</p>
-              <img
-                className="this-guide-spell-card-img"
-                src={`${baseApiURL}${version}/img/spell/${thisGuide.secondSpell.image}`}
-              />
+            <div className="this-guide-runes-spells-list">
+              <div className="this-guide-runes-section">
+                <div className="this-guide-rune-card">
+                  <p>Primary Rune:</p>
+                  <div className="this-guide-rune-card-info tooltip">
+                    <img
+                      className="this-guide-rune-card-img"
+                      src={`${baseApiURL}img/${thisGuide.primaryRune.image}`}
+                    />
+                    <span className="this-guide-tooltip-text">
+                      {thisGuide.primaryRune.name}
+                    </span>
+                  </div>
+                </div>
+                <div className="this-guide-rune-card">
+                  <p>Secondary Rune:</p>
+                  <div className="this-guide-rune-card-info tooltip">
+                    <img
+                      className="this-guide-rune-card-img"
+                      src={`${baseApiURL}img/${thisGuide.secondaryRune.image}`}
+                    />
+                    <span className="this-guide-tooltip-text">
+                      {thisGuide.secondaryRune.name}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="this-guide-spells-section">
+                <div className="this-guide-spell-card">
+                  <p>First Spell:</p>
+                  <div className="this-guide-spell-card-info tooltip">
+                    <img
+                      className="this-guide-spell-card-img"
+                      src={`${baseApiURL}${version}/img/spell/${thisGuide.firstSpell.image}`}
+                    />
+                    <span className="this-guide-tooltip-text">
+                      {thisGuide.firstSpell.name}
+                    </span>
+                  </div>
+                </div>
+                <div className="this-guide-spell-card tooltip">
+                  <p>Second Spell:</p>
+                  <div className="this-guide-spell-card-info tooltip">
+                    <img
+                      className="this-guide-spell-card-img"
+                      src={`${baseApiURL}${version}/img/spell/${thisGuide.secondSpell.image}`}
+                    />
+                    <span className="this-guide-tooltip-text">
+                      {thisGuide.secondSpell.name}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -83,15 +112,31 @@ const GuideDetails = ({ baseApiURL, version }) => {
               thisGuide.fifthItem,
               thisGuide.sixthItem,
             ].map((item, index) => (
-              <div className="this-guide-items-cards" key={index}>
-                <p>{item.name}</p>
+              <div className="this-guide-items-cards tooltip" key={index}>
+                <span className="this-guide-tooltip-text">{item.name}</span>
                 <img
                   className="this-guide-items-cards-img"
                   src={`${baseApiURL}${version}/img/item/${item.image}`}
                 />
+                {index < 5 ? (
+                  <div>
+                    <FaArrowRight />
+                  </div>
+                ) : null}
               </div>
             ))}
           </div>
+          <div>
+            <Link to={`/lolguides/${params.guideId}/edit`}>Edit Guide</Link>
+          </div>
+          <button
+            onClick={async () => {
+              deleteLOLGuide(params.guideId);
+              navigate("/lolguides/champions");
+            }}
+          >
+            Delete Guide
+          </button>
         </div>
       ) : null}
     </div>
