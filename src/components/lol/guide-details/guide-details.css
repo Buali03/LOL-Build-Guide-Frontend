@@ -1,0 +1,70 @@
+.this-guide-card {
+  border: 3px solid gold;
+  padding: 50px;
+  width: 800px;
+}
+.this-guide-header {
+  display: flex;
+  align-items: center;
+  gap: 10%;
+  margin-bottom: 20px;
+}
+.this-guide-header h1 {
+  font-size: 40px;
+}
+.this-guide-header p {
+  font-size: 20px;
+}
+
+.this-guide-champion-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.this-guide-runes-section {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.this-guide-rune-card {
+  flex: 1;
+  text-align: center;
+}
+
+.this-guide-rune-card-img {
+  max-width: 80px;
+  height: auto;
+}
+
+.this-guide-spells-section {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.this-guide-spell-card {
+  flex: 1;
+  text-align: center;
+}
+
+.this-guide-spell-card-img {
+  max-width: 60px;
+  height: auto;
+}
+
+.this-guide-items-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.this-guide-items-cards {
+  text-align: center;
+}
+
+.this-guide-items-cards-img {
+  max-width: 60px;
+  height: auto;
+}

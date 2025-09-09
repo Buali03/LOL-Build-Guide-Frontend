@@ -17,6 +17,7 @@ import ChampionsList from "./components/lol/champions-list/champions-list";
 import ChampionDetails from "./components/lol/champion-details/champion-details";
 import GuideForm from "./components/lol/guide-form/guide-form";
 import GuideList from "./components/lol/guide-list/guide-list";
+import GuideDetails from "./components/lol/guide-details/guide-details";
 import NavBar from "./components/NavBar/NavBar";
 
 // user components
@@ -182,6 +183,10 @@ function App() {
               summonerSpells={summonerSpells}
             />
           }
+        />
+        <Route
+          path="/lolguides/:guideId"
+          element={<GuideDetails baseApiURL={baseApiURL} version={version} />}
         />
         <Route
           path="/lolguides"

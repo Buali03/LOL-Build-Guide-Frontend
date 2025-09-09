@@ -56,15 +56,13 @@ const GuideForm = ({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!newLOLGuide.title) {
-      console.log("NO TITLE");
-      setNewLOLGuide({
-        ...newLOLGuide,
-        title: `${newLOLGuide.champion.name}'s Build Guide`,
-      });
-    }
-    setLOLGuide([...lolGuide, newLOLGuide]);
-    const response = await createLOLGuide(newLOLGuide);
+    const guideSubmit = {
+      ...newLOLGuide,
+      title: newLOLGuide.title || `${newLOLGuide.champion.name}'s Build Guide`,
+    };
+    setNewLOLGuide(guideSubmit);
+    setLOLGuide([...lolGuide, guideSubmit]);
+    const response = await createLOLGuide(guideSubmit);
     console.log("All guides ", lolGuide);
     navigate("/lolguides/champions");
   };
