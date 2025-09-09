@@ -23,7 +23,7 @@ const GuideForm = ({
       image: "perk-images/Styles/7203_Whimsy.png",
     },
     firstSpell: { name: "Barrier", image: "SummonerBarrier.png" },
-    secondSpell: { name: "Exhaust", image: "SummonerBoost.png" },
+    secondSpell: { name: "Cleanse", image: "SummonerBoost.png" },
     firstItem: { name: "Overlord's Bloodmail", image: "447111.png" },
     secondItem: { name: "Unending Despair", image: "2502.png" },
     thirdItem: { name: "Blackfire Torch", image: "2503.png" },
@@ -64,7 +64,7 @@ const GuideForm = ({
     setLOLGuide([...lolGuide, guideSubmit]);
     const response = await createLOLGuide(guideSubmit);
     console.log("All guides ", lolGuide);
-    navigate("/lolguides/champions");
+    navigate("/lolguides");
   };
   return (
     <div className="main-content">

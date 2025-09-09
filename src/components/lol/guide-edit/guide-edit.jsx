@@ -98,7 +98,7 @@ const GuideEdit = ({
     setLOLGuide([...lolGuide, guideSubmit]);
     const response = await updateLOLGuide(params.guideId, guideSubmit);
     console.log("All guides ", lolGuide);
-    navigate("/lolguides/champions");
+    navigate("/lolguides");
   };
   useEffect(() => {
     getGuideDetails();
@@ -354,7 +354,7 @@ const GuideEdit = ({
               </div>
             </div>
             <button type="submit" className="guide-form-submit">
-              Save Guide
+              Save Guide Changes
             </button>
           </form>
         ) : null}

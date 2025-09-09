@@ -116,14 +116,14 @@ function App() {
       const filteredSummonerSpells = allSummoners.filter((spell) =>
         [
           "SummonerFlash",
-          "SummonerIgnite",
+          "SummonerDot",
           "SummonerBarrier",
           "SummonerHeal",
-          "SummonerGhost",
+          "SummonerHaste",
           "SummonerSmite",
           "SummonerTeleport",
           "SummonerExhaust",
-          "SummonerCleanse",
+          "SummonerBoost",
         ].includes(spell.id)
       );
       setSummonerSpells(filteredSummonerSpells);

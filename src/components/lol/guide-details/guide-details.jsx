@@ -132,7 +132,7 @@ const GuideDetails = ({ baseApiURL, version }) => {
           <button
             onClick={async () => {
               deleteLOLGuide(params.guideId);
-              navigate("/lolguides/champions");
+              navigate("/lolguides");
             }}
           >
             Delete Guide

@@ -36,9 +36,7 @@ const GuideList = ({ baseApiURL, version }) => {
                       />
                     </div>
                     <div className="one-guide-preview-info">
-                      <p>
-                        {guide.champion.name}'s {guide.title} Build Guide
-                      </p>
+                      <p>{guide.title}</p>
                       <p>Guide Date: {formattedDate}</p>
                       <p>Created by: {guide.username.username}</p>
                       <div className="one-guide-preview-rune-info">
