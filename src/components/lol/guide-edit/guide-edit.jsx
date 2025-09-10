@@ -353,9 +353,11 @@ const GuideEdit = ({
                 })}
               </div>
             </div>
-            <button type="submit" className="guide-form-submit">
-              Save Guide Changes
-            </button>
+            <div className="guide-form-buttons">
+              <button type="submit" className="guide-form-submit">
+                Save Guide
+              </button>
+            </div>
           </form>
         ) : null}
       </div>
