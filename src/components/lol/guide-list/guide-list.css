@@ -10,6 +10,8 @@
 .all-guide-list-container {
   display: flex;
   flex-wrap: wrap;
+  width: 2000px;
+  padding: 25px;
   gap: 25px;
   justify-content: center;
 }

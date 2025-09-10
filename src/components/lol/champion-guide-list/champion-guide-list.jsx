@@ -35,10 +35,10 @@ const ChampionGuideList = ({ thisChamp, baseApiURL, version }) => {
 
   return !thisChampGuides ? null : (
     <div className="champion-guide-list">
-      <h1 className="champion-guide-list-title">
-        {thisChamp.name}'s Build Guides
-      </h1>
       <div className="this-champion-guide-list-container">
+        <h1 className="champion-guide-list-title">
+          {thisChamp.name}'s Build Guides
+        </h1>
         <div className="champion-guide-list-query-row">
           <input
             className="champion-guide-list-search-bar"
