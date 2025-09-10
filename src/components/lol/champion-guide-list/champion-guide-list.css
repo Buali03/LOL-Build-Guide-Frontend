@@ -1,7 +1,7 @@
 /* Container for all guides */
 .this-champion-guide-list-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
@@ -21,7 +21,12 @@
   overflow: hidden;
   transition: transform 0.2s;
 }
-
+.this-champion-guide-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 .this-champion-guide-preview:hover {
   transform: scale(1.02);
 }
@@ -84,7 +89,7 @@
   border-radius: 6px;
   width: 200px;
   outline: none;
-  color: white;
+  color: black;
 }
 
 /* Rune filtering and date sorting select  */

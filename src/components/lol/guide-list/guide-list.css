@@ -17,8 +17,9 @@
 /* Individual guide preview */
 .one-guide-preview {
   display: flex;
+  background-color: #333356;
   flex-direction: row;
-  background-color: rgb(62, 62, 118);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border: 2px solid gold;
   border-radius: 12px;
   overflow: hidden;

@@ -33,7 +33,7 @@ const ChampionGuideList = ({ thisChamp, baseApiURL, version }) => {
     getThisChampGuides();
   }, [thisChamp]);
 
-  return thisChampGuides ? (
+  return !thisChampGuides ? null : (
     <div className="champion-guide-list">
       <h1 className="champion-guide-list-title">
         {thisChamp.name}'s Build Guides
@@ -70,44 +70,46 @@ const ChampionGuideList = ({ thisChamp, baseApiURL, version }) => {
             <option value="Ascending">Order by Oldest</option>
           </select>
         </div>
-
-        {/* {filteredGuides ? ( */}
-
-        {console.log(filteredGuides)}
-        {filteredGuides.map((guide) => {
-          const date = new Date(guide.createdAt);
-          const formattedDate = date
-            .toLocaleDateString("en-GB")
-            .replace(/\//g, "-");
-          return (
-            <Link to={`/lolguides/${guide._id}`} key={guide._id}>
-              <div className="this-champion-guide-preview">
-                <div className="this-champion-preview-img" key={guide._id}>
-                  <img
-                    src={`${baseApiURL}${version}/img/champion/${guide.champion.image}`}
-                  />
-                </div>
-                <div className="this-champion-preview-info">
-                  <p>{guide.title}</p>
-                  <div className="this-champion-preview-rune-info">
-                    <img src={`${baseApiURL}img/${guide.primaryRune.image}`} />
-                    <p>{guide.primaryRune.name}</p>
+        <div className="this-champion-guide-grid">
+          {filteredGuides.length > 0 ? (
+            filteredGuides.map((guide) => {
+              const date = new Date(guide.createdAt);
+              const formattedDate = date
+                .toLocaleDateString("en-GB")
+                .replace(/\//g, "-");
+              return (
+                <Link to={`/lolguides/${guide._id}`} key={guide._id}>
+                  <div className="this-champion-guide-preview">
+                    <div className="this-champion-preview-img" key={guide._id}>
+                      <img
+                        src={`${baseApiURL}${version}/img/champion/${guide.champion.image}`}
+                      />
+                    </div>
+                    <div className="this-champion-preview-info">
+                      <p>{guide.title}</p>
+                      <div className="this-champion-preview-rune-info">
+                        <img
+                          src={`${baseApiURL}img/${guide.primaryRune.image}`}
+                        />
+                        <p>{guide.primaryRune.name}</p>
+                      </div>
+                      <p>
+                        Guide Date: {formattedDate} | Created by:{" "}
+                        {guide.username.username}
+                      </p>
+                    </div>
                   </div>
-                  <p>
-                    Guide Date: {formattedDate} | Created by:{" "}
-                    {guide.username.username}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          );
-        })}
+                </Link>
+              );
+            })
+          ) : (
+            <div className="no-guide-found-msg">
+              <h1>No Guides Found</h1>
+            </div>
+          )}
+        </div>
       </div>
     </div>
-  ) : // ): (
-  //   <h1>No guides found</h1>
-  // )}
-  null;
+  );
 };
-
 export default ChampionGuideList;
