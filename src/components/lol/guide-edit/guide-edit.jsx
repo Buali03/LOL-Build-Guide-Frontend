@@ -85,7 +85,7 @@ const GuideEdit = ({
       data = event.target.value;
     }
     setNewLOLGuide({ ...newLOLGuide, [event.target.name]: data });
-    console.log("Guide: ", newLOLGuide);
+    // console.log("Guide: ", newLOLGuide);
   };
 
   const handleSubmit = async (event) => {
@@ -97,7 +97,7 @@ const GuideEdit = ({
     setNewLOLGuide(guideSubmit);
     setLOLGuide([...lolGuide, guideSubmit]);
     const response = await updateLOLGuide(params.guideId, guideSubmit);
-    console.log("All guides ", lolGuide);
+    // console.log("All guides ", lolGuide);
     navigate("/lolguides");
   };
   useEffect(() => {

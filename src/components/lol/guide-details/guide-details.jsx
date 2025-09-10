@@ -18,7 +18,7 @@ const GuideDetails = ({ baseApiURL, version, token }) => {
   useEffect(() => {
     getThisGuide();
   }, []);
-  console.log(thisGuide);
+  // console.log(thisGuide);
   return (
     <div className="main-content">
       {thisGuide ? (
@@ -39,7 +39,7 @@ const GuideDetails = ({ baseApiURL, version, token }) => {
               </p>
             </div>
           </div>
-
+          <hr className="this-guide-hr" />
           <div className="this-guide-runes-spells-container">
             <div className="this-guide-runes-spells-headers">
               <h2>Runes</h2>
@@ -103,6 +103,7 @@ const GuideDetails = ({ baseApiURL, version, token }) => {
             </div>
           </div>
 
+          <hr className="this-guide-hr" />
           <h2>Items</h2>
           <div className="this-guide-items-section">
             {[
@@ -113,33 +114,42 @@ const GuideDetails = ({ baseApiURL, version, token }) => {
               thisGuide.fifthItem,
               thisGuide.sixthItem,
             ].map((item, index) => (
-              <div className="this-guide-items-cards tooltip" key={index}>
-                <span className="this-guide-tooltip-text">{item.name}</span>
-                <img
-                  className="this-guide-items-cards-img"
-                  src={`${baseApiURL}${version}/img/item/${item.image}`}
-                />
-                {index < 5 ? (
-                  <div>
-                    <FaArrowRight />
-                  </div>
-                ) : null}
+              <div className="this-guide-item">
+                <div className="this-guide-items-cards tooltip" key={index}>
+                  <span className="this-guide-tooltip-text">{item.name}</span>
+                  <img
+                    className="this-guide-items-cards-img"
+                    src={`${baseApiURL}${version}/img/item/${item.image}`}
+                  />
+                  {index < 5 ? (
+                    <div className="arrow">
+                      <FaArrowRight />
+                    </div>
+                  ) : null}
+                </div>
               </div>
             ))}
           </div>
           {jwtDecode(token).id === thisGuide.username._id && (
             <>
-              <div>
-                <Link to={`/lolguides/${params.guideId}/edit`}>Edit Guide</Link>
+              <hr className="this-guide-hr" />
+              <div className="this-guide-details-buttons">
+                <Link
+                  className="this-guide-edit-button"
+                  to={`/lolguides/${params.guideId}/edit`}
+                >
+                  Edit Guide
+                </Link>
+                <button
+                  className="this-guide-del-button"
+                  onClick={async () => {
+                    deleteLOLGuide(params.guideId);
+                    navigate("/lolguides");
+                  }}
+                >
+                  Delete Guide
+                </button>
               </div>
-              <button
-                onClick={async () => {
-                  deleteLOLGuide(params.guideId);
-                  navigate("/lolguides");
-                }}
-              >
-                Delete Guide
-              </button>
             </>
           )}
         </div>

@@ -1,6 +1,9 @@
 .this-guide-card {
-  border: 3px solid gold;
+  /* border: 3px solid gold; */
   padding: 50px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #333356;
   width: 800px;
 }
 .this-guide-header {
@@ -24,12 +27,16 @@
 
 .this-guide-runes-spells-headers {
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
+  gap: 390px;
 }
 .this-guide-runes-spells-list {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: start;
+  gap: 150px;
+  margin-bottom: 20px;
 }
+
 .this-guide-runes-section,
 .this-guide-spells-section {
   display: flex;
@@ -40,13 +47,29 @@
 .this-guide-rune-card-img {
   width: 50px;
 }
+
 .this-guide-items-section {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
   gap: 15px;
 }
 
+.this-guide-item {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .this-guide-items-cards {
-  margin: 20px;
+  margin: 20px 5px;
   gap: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .this-guide-items-cards-img {
@@ -56,7 +79,6 @@
 
 .tooltip {
   position: relative;
-  display: inline-block;
   cursor: pointer;
 }
 
@@ -72,4 +94,38 @@
 
 .tooltip:hover .this-guide-tooltip-text {
   visibility: visible;
+}
+
+.this-guide-details-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 50px;
+  height: 50px;
+}
+
+.this-guide-edit-button {
+  width: 200px;
+  border: 2px solid gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(4, 81, 4);
+}
+
+.this-guide-del-button {
+  width: 200px;
+  border: 2px solid gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #520404;
+  color: white;
 }

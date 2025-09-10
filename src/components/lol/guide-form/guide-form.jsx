@@ -51,7 +51,7 @@ const GuideForm = ({
       data = event.target.value;
     }
     setNewLOLGuide({ ...newLOLGuide, [event.target.name]: data });
-    console.log("Guide: ", newLOLGuide);
+    // console.log("Guide: ", newLOLGuide);
   };
 
   const handleSubmit = async (event) => {
@@ -63,7 +63,7 @@ const GuideForm = ({
     setNewLOLGuide(guideSubmit);
     setLOLGuide([...lolGuide, guideSubmit]);
     const response = await createLOLGuide(guideSubmit);
-    console.log("All guides ", lolGuide);
+    // console.log("All guides ", lolGuide);
     navigate("/lolguides");
   };
   return (
