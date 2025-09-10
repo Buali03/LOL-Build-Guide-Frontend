@@ -1,0 +1,41 @@
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.login-form {
+  background-color: red;
+  padding: 100px;
+  border-radius: 50%;
+  height: 500px;
+  width: 500px;
+  background-image: url("/public/riot-fist.png");
+  background-size: cover;
+  gap: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+.login {
+  margin-bottom: 100px;
+
+  font-size: 50px;
+}
+.login-input,
+.login-button {
+  width: 85%;
+  font-size: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid gray;
+  margin-top: 8px;
+}
+
+.login-button {
+  cursor: pointer;
+  margin-bottom: 100px;
+}
