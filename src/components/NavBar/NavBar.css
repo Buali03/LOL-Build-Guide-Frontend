@@ -1,12 +1,26 @@
 .navbar {
-  height: 50px;
+  height: 75px;
   background-color: rgb(24, 24, 65);
   margin-bottom: 100px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.nav-login-link {
+  color: #d3373a;
+  font-size: 30px;
+  margin: 15px;
+  text-decoration: none;
+}
 .nav-link {
   color: gold;
-  font-size: 20px;
-  margin: 5px;
+  font-size: 30px;
+  margin: 15px;
+  text-decoration: none;
+}
+
+.logout-link {
+  float: right;
 }

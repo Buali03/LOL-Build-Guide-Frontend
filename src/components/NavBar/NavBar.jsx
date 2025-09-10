@@ -7,7 +7,6 @@ const NavBar = ({ token, onLogout }) => {
     <nav className="navbar">
       {token ? (
         <>
-          <LogoutButton className="nav-link" onLogout={onLogout}></LogoutButton>
           <Link to="/lolguides/champions" className="nav-link">
             Champions
           </Link>
@@ -17,13 +16,14 @@ const NavBar = ({ token, onLogout }) => {
           <Link to="/lolguides" className="nav-link">
             Guides
           </Link>
+          <LogoutButton className="nav-link" onLogout={onLogout}></LogoutButton>
         </>
       ) : (
         <>
-          <Link to="/user/login" className="nav-link">
+          <Link to="/user/login" className="nav-login-link">
             Log in
           </Link>
-          <Link to="/user/signup" className="nav-link">
+          <Link to="/user/signup" className="nav-login-link">
             Sign up
           </Link>
         </>
