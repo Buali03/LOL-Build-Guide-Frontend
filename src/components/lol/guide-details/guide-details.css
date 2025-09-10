@@ -106,7 +106,7 @@
 
 .this-guide-edit-button {
   width: 200px;
-  border: 2px solid gold;
+  border: 2px solid rgb(4, 81, 4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,11 +115,12 @@
   cursor: pointer;
   color: white;
   background-color: rgb(4, 81, 4);
+  border-radius: 12px;
 }
 
 .this-guide-del-button {
   width: 200px;
-  border: 2px solid gold;
+  border: 2px solid #520404;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,5 +128,6 @@
   text-decoration: none;
   cursor: pointer;
   background-color: #520404;
+  border-radius: 12px;
   color: white;
 }

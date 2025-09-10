@@ -22,11 +22,13 @@
   background-color: #333356;
   flex-direction: row;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border: 2px solid gold;
   border-radius: 12px;
-  overflow: hidden;
+  padding: 15px;
   width: 500px;
   transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .one-guide-preview:hover {
@@ -35,11 +37,15 @@
 
 /* Guide image */
 .one-guide-preview-img {
-  flex: 1;
-  border-right: 2px solid gold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
 }
 
 .one-guide-preview-img img {
+  border-radius: 12px;
   width: 100%;
   height: 100%;
   object-fit: cover;
