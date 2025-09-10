@@ -3,11 +3,13 @@
   height: 215px;
   width: 1100px;
   margin-bottom: 100px;
-  /* border: 2px solid gold; */
   padding: 10px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   background-color: #333356;
+}
+.champ-info img {
+  border-radius: 12px;
 }
 .champ-info-text {
   text-align: center;

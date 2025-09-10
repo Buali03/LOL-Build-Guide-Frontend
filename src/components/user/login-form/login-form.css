@@ -18,20 +18,21 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: white;
 }
 .login {
   margin-bottom: 100px;
-
+  color: rgb(123, 20, 20);
   font-size: 50px;
 }
 .login-input,
 .login-button {
+  color: white;
   width: 85%;
   font-size: 16px;
   padding: 16px;
   border-radius: 8px;
-  border: 1px solid gray;
+  border: 1px solid rgb(123, 20, 20);
+  background-color: rgb(123, 20, 20);
   margin-top: 8px;
 }
 

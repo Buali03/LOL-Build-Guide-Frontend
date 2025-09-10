@@ -33,6 +33,7 @@
 
 .one-guide-preview:hover {
   transform: scale(1.03);
+  border: 2px solid gold;
 }
 
 /* Guide image */
