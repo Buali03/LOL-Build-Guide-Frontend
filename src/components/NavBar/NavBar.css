@@ -6,10 +6,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 100px;
 }
 
+.hexcraft-logo {
+  font-size: 40px;
+  font-weight: 700;
+  text-decoration: none;
+}
 .nav-login-link {
-  color: #d3373a;
+  color: gold;
   font-size: 30px;
   margin: 15px;
   text-decoration: none;

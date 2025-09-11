@@ -19,6 +19,7 @@ import GuideForm from "./components/lol/guide-form/guide-form";
 import GuideList from "./components/lol/guide-list/guide-list";
 import GuideDetails from "./components/lol/guide-details/guide-details";
 import GuideEdit from "./components/lol/guide-edit/guide-edit";
+import HomePage from "./components/lol/homepage/homepage";
 import NavBar from "./components/NavBar/NavBar";
 
 // user components
@@ -150,6 +151,7 @@ function App() {
           element={<LoginForm onLogin={handleLogin} />}
         />
         <Route path="/user/signup" element={<SignUpForm />} />
+        <Route path="/" element={<HomePage />} />
         <Route
           path="/lolguides/champions"
           element={

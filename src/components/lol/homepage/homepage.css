@@ -1,0 +1,115 @@
+.homepage-button.blue {
+  border-color: #3399ff;
+  color: #3399ff;
+  box-shadow: 0 0 8px rgba(51, 153, 255, 0.5);
+}
+
+.homepage-button.blue:hover {
+  background: linear-gradient(180deg, #1a2f4d, #0e1b33);
+  box-shadow: 0 0 15px #3399ff;
+}
+.homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  color: #f5f5dc;
+  text-align: center;
+}
+
+.homepage-title {
+  font-size: 3rem;
+  color: gold;
+  text-shadow: 0 0 20px #b8860b;
+  margin-bottom: 20px;
+}
+
+.homepage-text {
+  font-size: 1.2rem;
+  max-width: 700px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.homepage-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.homepage-button {
+  background: linear-gradient(180deg, #1e1e3f, #101022);
+  border: 2px solid gold;
+  color: gold;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.homepage-button:hover {
+  background: linear-gradient(180deg, #292950, #151530);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px gold;
+}
+
+.homepage-button.green {
+  border-color: #00ff99;
+  color: #00ff99;
+  box-shadow: 0 0 8px rgba(0, 255, 153, 0.5);
+}
+
+.homepage-button.green:hover {
+  background: linear-gradient(180deg, #1a3f35, #0f241f);
+  box-shadow: 0 0 15px #00ff99;
+}
+.main-homepage {
+  padding: 50px 20px;
+  font-family: "Friz Quadrata", serif;
+  text-align: center;
+}
+
+.homepage-title {
+  font-size: 60px;
+  color: gold;
+  text-shadow: 2px 2px 5px black;
+  margin-bottom: 20px;
+}
+
+.homepage-description {
+  font-size: 20px;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  line-height: 1.6;
+}
+
+.homepage-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.homepage-link {
+  background-color: #1e1e4d;
+  color: gold;
+  padding: 15px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.homepage-link:hover {
+  background-color: #2a2a80;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.7);
+}

@@ -5,6 +5,9 @@ import LogoutButton from "../user/logout-button/logout-button";
 const NavBar = ({ token, onLogout }) => {
   return (
     <nav className="navbar">
+      <div className="hexcraft-logo">
+        <Link to="/">HexCraft</Link>
+      </div>
       {token ? (
         <>
           <Link to="/lolguides/champions" className="nav-link">
