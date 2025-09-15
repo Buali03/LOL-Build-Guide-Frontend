@@ -6,7 +6,9 @@ const NavBar = ({ token, onLogout }) => {
   return (
     <nav className="navbar">
       <div className="hexcraft-logo">
-        <Link to="/">HexCraft</Link>
+        <Link className="mainpage-logo" to="/">
+          HexCraft
+        </Link>
       </div>
       {token ? (
         <>

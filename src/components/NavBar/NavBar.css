@@ -9,12 +9,13 @@
   gap: 100px;
 }
 
-.hexcraft-logo {
+.mainpage-logo {
   font-size: 40px;
   font-weight: 700;
   text-decoration: none;
   color: red;
 }
+
 .nav-login-link {
   color: gold;
   font-size: 30px;
