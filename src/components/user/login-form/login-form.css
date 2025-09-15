@@ -11,7 +11,7 @@
   border-radius: 50%;
   height: 500px;
   width: 500px;
-  background-image: url("/public/riot-fist.png");
+  background-image: url("/riot-fist.png");
   background-size: cover;
   gap: 35px;
   display: flex;
