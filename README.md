@@ -42,7 +42,7 @@ The goal of this website is to provide a community-driven hub for LoL players. I
 <b>Logout:</b> Users log out of their currently logged in account.
 </p>
 </br>
-<p>Please share your build guide and browse other users in <i><a href="">Hex Craft</a></i>!</p>
+<p>Please share your build guide and browse other users in <i><a href="https://hexbuildcraft.netlify.app/">Hex Craft</a></i>!</p>
 
 <h2>Attributions</h2>
 <p><b>MongoDB</b></p>
