@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import "./login-form.css";
-const Backend_URL = import.meta.env.VITE_BACK_END_SERVER_URL;
+const Backend_URL = import.meta.env.VITE_API_URL;
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
